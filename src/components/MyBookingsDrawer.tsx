@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Calendar, User, Phone, Mail, Award, Trash2, ShieldAlert, Heart, RefreshCw } from 'lucide-react';
 import { Booking } from '../types';
+import Button from './Button';
 
 interface MyBookingsDrawerProps {
   isOpen: boolean;
@@ -114,18 +115,19 @@ export default function MyBookingsDrawer({
                                 {booking.parentName}
                               </span>
                             </div>
-                            <button
+                            <Button
                               onClick={() => {
                                 if (confirm(`Are you sure you want to cancel the registration for ${booking.playerName}?`)) {
                                   onCancelBooking(booking.id);
                                 }
                               }}
-                              className="p-2 text-rose-500 hover:bg-rose-50 rounded-lg border border-slate-100 hover:border-rose-100 transition-all flex items-center gap-1 cursor-pointer"
-                              title="Cancel Ticket Reservation"
+                              variant="ghost"
+                              size="sm"
+                              className="text-rose-500 hover:text-rose-600 hover:bg-rose-50 border border-slate-100 hover:border-rose-100 rounded-lg p-2 font-black flex items-center justify-center gap-1 shadow-none hover:shadow-none"
+                              leftIcon={<Trash2 className="w-4 h-4" />}
                             >
-                              <Trash2 className="w-4 h-4" />
-                              <span className="text-[10px] font-bold uppercase">CANCEL</span>
-                            </button>
+                              CANCEL
+                            </Button>
                           </div>
                         </div>
                       </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { Sparkles, Award, Star } from 'lucide-react';
+import Button from './Button';
 
 interface HeroProps {
   onOpenBookingModal: () => void;
@@ -103,14 +104,15 @@ export default function Hero({ onOpenBookingModal, backgroundPath }: HeroProps) 
             transition={{ duration: 0.7, delay: 0.4 }}
             className="flex-shrink-0"
           >
-            <button
+            <Button
               onClick={onOpenBookingModal}
-              style={{ fontFamily: 'var(--font-display)' }}
-              className="w-full sm:w-auto px-10 py-4.5 bg-brand-blue hover:bg-brand-blue-hover hover:shadow-lg hover:shadow-brand-blue/20 text-white rounded-2xl font-black text-sm tracking-wider uppercase transition-all duration-300 transform active:scale-95 cursor-pointer flex items-center justify-center gap-3.5"
+              variant="blue"
+              size="xl"
+              rightIcon={<Award className="w-5 h-5 text-amber-300" />}
+              className="w-full sm:w-auto hover:shadow-lg hover:shadow-brand-blue/20"
             >
-              <span>BOOK NOW</span>
-              <Award className="w-5 h-5 text-amber-300" />
-            </button>
+              BOOK NOW
+            </Button>
           </motion.div>
 
         </div>

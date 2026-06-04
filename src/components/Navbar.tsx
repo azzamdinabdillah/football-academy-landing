@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, Calendar, Ticket, Phone } from 'lucide-react';
 import Logo from './Logo';
+import Button from './Button';
 
 interface NavbarProps {
   bookingsCount: number;
@@ -85,27 +86,29 @@ export default function Navbar({ bookingsCount, onOpenBookings, onOpenBookingMod
         {/* Right side CTA / Cart indicator */}
         <div className="hidden sm:flex items-center gap-4">
           {/* Active registrations ticket bag */}
-          <button
+          <Button
             onClick={onOpenBookings}
-            className="relative p-2.5 rounded-xl border border-slate-200 hover:border-brand-blue/30 hover:bg-blue-50/40 text-slate-700 hover:text-brand-blue transition-all flex items-center gap-2 cursor-pointer"
+            variant="ghost"
+            size="md"
+            className="relative border border-slate-200 hover:border-brand-blue/30 hover:bg-blue-50/40 text-slate-700 font-bold"
+            leftIcon={<Ticket className="w-4.5 h-4.5" />}
             title="Lihat Pendaftaran Saya"
           >
-            <Ticket className="w-4.5 h-4.5" />
             {bookingsCount > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center font-bold text-[10px] animate-bounce">
+              <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center font-bold text-[10px] animate-bounce z-10 animate-pulse">
                 {bookingsCount}
               </span>
             )}
-            <span className="text-[11px] font-bold uppercase tracking-wider">My Tickets</span>
-          </button>
+            My Tickets
+          </Button>
 
-          <button
+          <Button
             onClick={onOpenBookingModal}
-            style={{ fontFamily: 'var(--font-display)' }}
-            className="px-5 py-2.5 bg-brand-blue hover:bg-brand-blue-hover text-white rounded-xl font-bold text-[11px] tracking-wide uppercase shadow-sm active:scale-95 duration-150 cursor-pointer"
+            variant="blue"
+            size="md"
           >
             Book Now
-          </button>
+          </Button>
         </div>
 
         {/* Mobile controls Hamburger */}
@@ -159,15 +162,17 @@ export default function Navbar({ bookingsCount, onOpenBookings, onOpenBookingMod
               <Ticket className="w-4 h-4" />
               <span>My Registrations ({bookingsCount})</span>
             </button>
-            <button
+            <Button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenBookingModal();
               }}
-              className="w-full py-3 bg-brand-blue text-white rounded-xl text-xs font-bold uppercase tracking-wider text-center"
+              variant="blue"
+              size="md"
+              fullWidth
             >
               Book Academy Spot Now
-            </button>
+            </Button>
           </div>
         </div>
       )}

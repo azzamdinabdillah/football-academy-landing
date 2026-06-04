@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Mail, Phone, MapPin, Send, CheckCircle, X, Facebook, Linkedin, Instagram } from 'lucide-react';
+import Button from '../Button';
 
 export default function ContactSection() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -60,12 +61,14 @@ export default function ContactSection() {
             </p>
 
             <div className="pt-2">
-              <button
+              <Button
                 onClick={() => setIsContactModalOpen(true)}
-                className="px-8 py-3.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-800 font-extrabold text-xs tracking-wider rounded-full shadow-sm hover:shadow-md duration-200 transition-all uppercase flex items-center gap-2 cursor-pointer active:scale-95"
+                variant="ghost"
+                size="lg"
+                className="bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-800 font-extrabold"
               >
                 CONTACT US
-              </button>
+              </Button>
             </div>
           </div>
 
@@ -234,13 +237,15 @@ export default function ContactSection() {
                     />
                   </div>
 
-                  <button
+                  <Button
                     type="submit"
-                    className="w-full mt-2 py-3 bg-brand-blue hover:bg-brand-blue-hover active:scale-95 duration-150 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer transition-all"
+                    variant="blue"
+                    size="md"
+                    className="w-full mt-2 flex items-center justify-center gap-2"
+                    rightIcon={<Send className="w-3.5 h-3.5" />}
                   >
-                    <span>Send Message</span>
-                    <Send className="w-3.5 h-3.5" />
-                  </button>
+                    Send Message
+                  </Button>
                 </form>
               )}
             </motion.div>

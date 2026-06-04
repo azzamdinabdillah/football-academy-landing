@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Calendar, User, Mail, Phone, Flame, Check, HelpCircle, Trophy, Ticket, AlertTriangle } from 'lucide-react';
 import { FutsalCamp, TrainingPackage, Booking } from '../types';
+import Button from './Button';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -368,12 +369,14 @@ export default function BookingModal({
                       ${currentItemPrice()}
                     </p>
                   </div>
-                  <button
+                  <Button
                     type="submit"
-                    className="w-full sm:w-auto px-6 py-3 bg-brand-blue hover:bg-brand-blue-hover text-white rounded-xl font-bold text-xs tracking-wider uppercase shadow-md active:scale-95 duration-150 cursor-pointer"
+                    variant="blue"
+                    size="md"
+                    className="w-full sm:w-auto px-6 py-3"
                   >
                     Confirm & Reserve Spot
-                  </button>
+                  </Button>
                 </div>
               </form>
             ) : (
@@ -459,20 +462,24 @@ export default function BookingModal({
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3 w-full max-w-md pt-2">
-                  <button
+                  <Button
                     onClick={() => {
                       window.print();
                     }}
-                    className="w-full sm:flex-1 py-3 border border-slate-300 rounded-xl hover:bg-slate-50 font-semibold text-xs transition active:scale-98 text-slate-700 cursor-pointer text-center"
+                    variant="ghost"
+                    size="md"
+                    className="w-full sm:flex-1 border border-slate-300 rounded-xl hover:bg-slate-50 text-slate-700 font-semibold"
                   >
                     Cetak Resit (Print Ticket)
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     onClick={handleResetClose}
-                    className="w-full sm:flex-1 py-3 bg-brand-blue text-white rounded-xl font-bold text-xs tracking-wide uppercase shadow-md active:scale-98 hover:bg-brand-blue-hover transition cursor-pointer text-center"
+                    variant="blue"
+                    size="md"
+                    className="w-full sm:flex-1"
                   >
                     Finish Registration
-                  </button>
+                  </Button>
                 </div>
               </div>
             )}

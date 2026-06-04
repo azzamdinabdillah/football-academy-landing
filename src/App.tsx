@@ -9,11 +9,11 @@ import Lenis from 'lenis';
 
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import AboutSection from './components/AboutSection';
-import CampsSection from './components/CampsSection';
-import TrainingsSection from './components/TrainingsSection';
-import TestimonialsSection from './components/TestimonialsSection';
-import ContactSection from './components/ContactSection';
+import AboutSection from './components/sections/AboutSection';
+import CampsSection from './components/sections/CampsSection';
+import TrainingsSection from './components/sections/TrainingsSection';
+import TestimonialsSection from './components/sections/TestimonialsSection';
+import ContactSection from './components/sections/ContactSection';
 
 import BookingModal from './components/BookingModal';
 import MyBookingsDrawer from './components/MyBookingsDrawer';

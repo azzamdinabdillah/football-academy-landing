@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Check, Users, Award, Star } from 'lucide-react';
+import Button from '../Button';
 
 interface AboutSectionProps {
   onOpenBooking?: () => void;
@@ -107,12 +108,14 @@ export default function AboutSection({ onOpenBooking }: AboutSectionProps) {
               viewport={{ once: true }}
               className="lg:col-span-1"
             >
-              <button
+              <Button
                 onClick={onOpenBooking}
-                className="w-full lg:w-auto px-8 py-3 bg-white border-2 border-brand-blue hover:bg-brand-blue/5 text-brand-blue font-black text-xs tracking-wider rounded-full transition-all duration-200 active:scale-95 cursor-pointer uppercase text-center block shadow-sm hover:shadow"
+                variant="outline-blue"
+                size="lg"
+                className="w-full lg:w-auto text-center block"
               >
                 BOOK NOW
-              </button>
+              </Button>
             </motion.div>
 
             <div className="hidden lg:block lg:col-span-2" />
@@ -194,13 +197,14 @@ export default function AboutSection({ onOpenBooking }: AboutSectionProps) {
                       </div>
                     </div>
 
-                    <button 
+                    <Button 
                       onClick={onOpenBooking}
-                      style={{ fontFamily: 'var(--font-display)' }}
-                      className="px-4 py-2 bg-white text-brand-blue font-black text-[11px] rounded-full shadow-[0_4px_16px_rgba(0,112,192,0.12)] border border-brand-blue/15 hover:border-brand-blue hover:bg-brand-blue/5 transition-all duration-300 cursor-pointer flex items-center gap-1"
+                      variant="outline-blue"
+                      size="sm"
+                      rightIcon={<span className="font-extrabold text-brand-blue opacity-80">+</span>}
                     >
-                      Book Now <span className="font-extrabold text-brand-blue opacity-80">+</span>
-                    </button>
+                      Book Now
+                    </Button>
                   </div>
                 </div>
               </motion.div>
