@@ -38,17 +38,17 @@ export default function Button({
   ...props
 }: ButtonProps) {
   // Base classes for consistent aesthetic, active states, and cursor settings
-  const baseClasses = 'inline-flex items-center justify-center transition-all duration-300 transform active:scale-95 cursor-pointer uppercase select-none font-bold tracking-wider';
+  const baseClasses = 'group inline-flex items-center justify-center transition-all duration-300 ease-out transform active:scale-95 cursor-pointer uppercase select-none font-bold tracking-wider';
 
   // Variant classes map
   const variantClasses: Record<ButtonVariant, string> = {
-    'blue': 'bg-brand-blue hover:bg-brand-blue-hover text-white shadow-md hover:shadow-lg hover:shadow-brand-blue/15',
-    'orange': 'bg-brand-orange hover:bg-brand-orange-hover text-white shadow-md hover:shadow-lg hover:shadow-brand-orange/15',
-    'indigo': 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-md hover:shadow-lg hover:shadow-indigo-600/15',
-    'dark': 'bg-brand-dark hover:bg-neutral-800 text-white shadow-md hover:shadow-lg hover:shadow-black/10',
-    'outline-blue': 'bg-white border-2 border-brand-blue hover:bg-brand-blue/5 text-brand-blue shadow-sm hover:shadow',
-    'outline-orange': 'bg-white border-2 border-brand-orange hover:bg-brand-orange/5 text-brand-orange shadow-sm hover:shadow',
-    'ghost': 'bg-transparent hover:bg-slate-50 text-slate-700 hover:text-brand-blue border border-transparent'
+    'blue': 'bg-brand-blue text-white shadow-md hover:-translate-y-0.5 hover:bg-brand-blue-hover hover:shadow-lg hover:shadow-brand-blue/25',
+    'orange': 'bg-brand-orange text-white shadow-md hover:-translate-y-0.5 hover:bg-brand-orange-hover hover:shadow-lg hover:shadow-brand-orange/25',
+    'indigo': 'bg-indigo-600 text-white shadow-md hover:-translate-y-0.5 hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-600/25',
+    'dark': 'bg-brand-dark text-white border border-neutral-800 hover:-translate-y-0.5 hover:bg-brand-blue hover:border-brand-blue/30 hover:shadow-lg hover:shadow-brand-blue/20',
+    'outline-blue': 'bg-white border-2 border-brand-blue text-brand-blue shadow-sm hover:-translate-y-0.5 hover:bg-brand-blue hover:text-white hover:shadow-md hover:shadow-brand-blue/15',
+    'outline-orange': 'bg-white border-2 border-brand-orange text-brand-orange shadow-sm hover:-translate-y-0.5 hover:bg-brand-orange hover:text-white hover:shadow-md hover:shadow-brand-orange/15',
+    'ghost': 'bg-transparent text-slate-700 border border-transparent hover:-translate-y-0.5 hover:bg-slate-100 hover:text-brand-blue'
   };
 
   // Size classes map
@@ -81,9 +81,17 @@ export default function Button({
 
   return (
     <button className={combinedClasses} style={style} {...props}>
-      {leftIcon && <span className="flex items-center mr-2">{leftIcon}</span>}
+      {leftIcon && (
+        <span className="flex items-center mr-2 transition-transform duration-300 ease-out group-hover:-translate-x-0.5">
+          {leftIcon}
+        </span>
+      )}
       <span>{children}</span>
-      {rightIcon && <span className="flex items-center ml-2">{rightIcon}</span>}
+      {rightIcon && (
+        <span className="flex items-center ml-2 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
+          {rightIcon}
+        </span>
+      )}
     </button>
   );
 }
