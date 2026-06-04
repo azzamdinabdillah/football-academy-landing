@@ -1,0 +1,6 @@
+{
+  "name": "San Francisco Youth Futsal",
+  "description": "An interactive, high-fidelity landing page and training booking portal for San Francisco Youth Futsal featuring an elite soccer training program.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
