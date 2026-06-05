@@ -3,6 +3,10 @@ import { motion, AnimatePresence } from 'motion/react';
 import { X, Calendar, User, Mail, Phone, Flame, Check, HelpCircle, Trophy, Ticket, AlertTriangle } from 'lucide-react';
 import { FutsalCamp, TrainingPackage, Booking } from '../types';
 import Button from './Button';
+import Input from './form/Input';
+import Select from './form/Select';
+import DateInput from './form/DateInput';
+import Textarea from './form/Textarea';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -241,40 +245,32 @@ export default function BookingModal({
 
                 {/* Service Dropdown & Date */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
-                  <div>
-                    <label className="block text-[10px] sm:text-[11px] font-bold text-slate-600 uppercase mb-1">Selected Program *</label>
-                    <select
-                      value={selectedItemId}
-                      onChange={(e) => setSelectedItemId(e.target.value)}
-                      className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                    >
-                      {bookingType === 'Camp'
-                        ? camps.map(c => (
-                            <option key={c.id} value={c.id}>
-                              {c.title} (${c.price})
-                            </option>
-                          ))
-                        : trainings.map(t => (
-                            <option key={t.id} value={t.id}>
-                              {t.title} (${t.pricePerSession}/session)
-                            </option>
-                          ))}
-                    </select>
-                  </div>
+                  <Select
+                    label="Selected Program"
+                    value={selectedItemId}
+                    onChange={(e) => setSelectedItemId(e.target.value)}
+                    required
+                  >
+                    {bookingType === 'Camp'
+                      ? camps.map(c => (
+                          <option key={c.id} value={c.id}>
+                            {c.title} (${c.price})
+                          </option>
+                        ))
+                      : trainings.map(t => (
+                          <option key={t.id} value={t.id}>
+                            {t.title} (${t.pricePerSession}/session)
+                          </option>
+                        ))}
+                  </Select>
 
-                  <div>
-                    <label className="block text-[10px] sm:text-[11px] font-bold text-slate-600 uppercase mb-1">Session / Start Date *</label>
-                    <div className="relative">
-                      <input
-                        type="date"
-                        value={selectedDate}
-                        onChange={(e) => setSelectedDate(e.target.value)}
-                        className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue pl-9"
-                        min="2026-06-02"
-                      />
-                      <Calendar className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3" />
-                    </div>
-                  </div>
+                  <DateInput
+                    label="Session / Start Date"
+                    value={selectedDate}
+                    onChange={(e) => setSelectedDate(e.target.value)}
+                    min="2026-06-02"
+                    required
+                  />
                 </div>
 
                 <div className="border-t border-slate-100 my-1.5" />
@@ -284,29 +280,25 @@ export default function BookingModal({
                   <h4 className="text-[11px] sm:text-xs font-bold text-brand-blue uppercase tracking-wider mb-2.5">Player Registration Info</h4>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div className="sm:col-span-2">
-                      <label className="block text-[10px] font-semibold text-slate-500 uppercase mb-1">Player Full Name *</label>
-                      <div className="relative">
-                        <input
-                          type="text"
-                          placeholder="e.g. Dani Abdillah"
-                          value={playerName}
-                          onChange={(e) => setPlayerName(e.target.value)}
-                          className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue pl-9"
-                          required
-                        />
-                        <User className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3" />
-                      </div>
+                      <Input
+                        label="Player Full Name"
+                        type="text"
+                        placeholder="e.g. Dani Abdillah"
+                        value={playerName}
+                        onChange={(e) => setPlayerName(e.target.value)}
+                        required
+                        icon={<User className="w-3.5 h-3.5" />}
+                      />
                     </div>
 
                     <div>
-                      <label className="block text-[10px] font-semibold text-slate-500 uppercase mb-1">Player Age *</label>
-                      <input
+                      <Input
+                        label="Player Age"
                         type="number"
                         min="5"
                         max="20"
                         value={playerAge}
                         onChange={(e) => setPlayerAge(parseInt(e.target.value) || 10)}
-                        className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue"
                         required
                       />
                     </div>
@@ -317,62 +309,46 @@ export default function BookingModal({
                 <div className="space-y-3">
                   <h4 className="text-[11px] sm:text-xs font-bold text-orange-500 uppercase tracking-wider mb-1.5">Parent / Guardian Contact</h4>
                   
-                  <div>
-                    <label className="block text-[10px] font-semibold text-slate-500 uppercase mb-1">Parent/Guardian Name *</label>
-                    <input
-                      type="text"
-                      placeholder="e.g. Azzam Abdillah"
-                      value={parentName}
-                      onChange={(e) => setParentName(e.target.value)}
-                      className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                      required
-                    />
-                  </div>
+                  <Input
+                    label="Parent/Guardian Name"
+                    type="text"
+                    placeholder="e.g. Azzam Abdillah"
+                    value={parentName}
+                    onChange={(e) => setParentName(e.target.value)}
+                    required
+                  />
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-[10px] font-semibold text-slate-500 uppercase mb-1">Email Address *</label>
-                      <div className="relative">
-                        <input
-                          type="email"
-                          placeholder="guardian@example.com"
-                          value={parentEmail}
-                          onChange={(e) => setParentEmail(e.target.value)}
-                          className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue pl-9"
-                          required
-                        />
-                        <Mail className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3" />
-                      </div>
-                    </div>
+                    <Input
+                      label="Email Address"
+                      type="email"
+                      placeholder="guardian@example.com"
+                      value={parentEmail}
+                      onChange={(e) => setParentEmail(e.target.value)}
+                      required
+                      icon={<Mail className="w-3.5 h-3.5" />}
+                    />
 
-                    <div>
-                      <label className="block text-[10px] font-semibold text-slate-500 uppercase mb-1">Contact Phone *</label>
-                      <div className="relative">
-                        <input
-                          type="tel"
-                          placeholder="+1 (555) 019-2834"
-                          value={parentPhone}
-                          onChange={(e) => setParentPhone(e.target.value)}
-                          className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue pl-9"
-                          required
-                        />
-                        <Phone className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3" />
-                      </div>
-                    </div>
+                    <Input
+                      label="Contact Phone"
+                      type="tel"
+                      placeholder="+1 (555) 019-2834"
+                      value={parentPhone}
+                      onChange={(e) => setParentPhone(e.target.value)}
+                      required
+                      icon={<Phone className="w-3.5 h-3.5" />}
+                    />
                   </div>
                 </div>
 
                 {/* Medical Notes / Positions */}
-                <div>
-                  <label className="block text-[10px] font-semibold text-slate-500 uppercase mb-1">Special Notes / Allergies / Experience Level (Optional)</label>
-                  <textarea
-                    placeholder="Provide any medical details, team experience, or positional focus..."
-                    value={notes}
-                    onChange={(e) => setNotes(e.target.value)}
-                    rows={2}
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                  />
-                </div>
+                <Textarea
+                  label="Special Notes / Allergies / Experience Level (Optional)"
+                  placeholder="Provide any medical details, team experience, or positional focus..."
+                  value={notes}
+                  onChange={(e) => setNotes(e.target.value)}
+                  rows={2}
+                />
 
                 {/* Bottom Pricing Summary and Action */}
                 <div className="p-4 sm:p-5 bg-slate-50 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 border border-slate-100">
