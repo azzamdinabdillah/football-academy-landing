@@ -8,15 +8,15 @@ import { Sparkles, ArrowUp, Milestone, Heart } from 'lucide-react';
 import Lenis from 'lenis';
 
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
+import Hero from './components/sections/Hero';
 import AboutSection from './components/sections/AboutSection';
 import CampsSection from './components/sections/CampsSection';
 import TrainingsSection from './components/sections/TrainingsSection';
 import TestimonialsSection from './components/sections/TestimonialsSection';
 import ContactSection from './components/sections/ContactSection';
 
-import BookingModal from './components/BookingModal';
-import MyBookingsDrawer from './components/MyBookingsDrawer';
+import BookingModal from './components/modals/BookingModal';
+import MyBookingsDrawer from './components/modals/MyBookingsDrawer';
 import CustomCursor from './components/CustomCursor';
 
 import { Booking } from './types';

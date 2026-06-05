@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { Sparkles, Award, Star } from 'lucide-react';
-import Button from './Button';
+import Button from '../Button';
 
 interface HeroProps {
   onOpenBookingModal: () => void;

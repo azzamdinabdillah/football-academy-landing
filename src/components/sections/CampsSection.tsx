@@ -1,7 +1,7 @@
 import React from 'react';
 import { ShieldCheck } from 'lucide-react';
 import { FutsalCamp } from '../../types';
-import CampCard from '../CampCard';
+import CampCard from '../cards/CampCard';
 import SectionHeader from '../SectionHeader';
 
 interface CampsSectionProps {

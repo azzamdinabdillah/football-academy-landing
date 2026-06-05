@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Calendar, User, Mail, Phone, Flame, Check, HelpCircle, Trophy, Ticket, AlertTriangle } from 'lucide-react';
-import { FutsalCamp, TrainingPackage, Booking } from '../types';
-import Button from './Button';
-import Input from './form/Input';
-import Select from './form/Select';
-import DateInput from './form/DateInput';
-import Textarea from './form/Textarea';
+import { FutsalCamp, TrainingPackage, Booking } from '../../types';
+import Button from '../Button';
+import Input from '../form/Input';
+import Select from '../form/Select';
+import DateInput from '../form/DateInput';
+import Textarea from '../form/Textarea';
 
 interface BookingModalProps {
   isOpen: boolean;

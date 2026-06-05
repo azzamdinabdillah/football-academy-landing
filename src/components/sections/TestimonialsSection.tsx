@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { Star, MessageSquare } from 'lucide-react';
 import { Testimonial } from '../../types';
 import Button from '../Button';
-import TestimonialCard from '../TestimonialCard';
+import TestimonialCard from '../cards/TestimonialCard';
 
 interface TestimonialsSectionProps {
   testimonials: Testimonial[];

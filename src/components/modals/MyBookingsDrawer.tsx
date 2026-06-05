@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Calendar, User, Phone, Mail, Award, Trash2, ShieldAlert, Heart, RefreshCw } from 'lucide-react';
-import { Booking } from '../types';
-import Button from './Button';
+import { Booking } from '../../types';
+import Button from '../Button';
 
 interface MyBookingsDrawerProps {
   isOpen: boolean;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { MapPin, Users, Calendar, ArrowRight } from 'lucide-react';
-import { FutsalCamp } from '../types';
-import Button from './Button';
+import { FutsalCamp } from '../../types';
+import Button from '../Button';
 
 interface CampCardProps {
   camp: FutsalCamp;

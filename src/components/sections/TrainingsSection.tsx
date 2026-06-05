@@ -1,7 +1,7 @@
 import React from 'react';
 import { Award } from 'lucide-react';
 import { TrainingPackage } from '../../types';
-import PricingCard from '../PricingCard';
+import PricingCard from '../cards/PricingCard';
 import SectionHeader from '../SectionHeader';
 
 interface TrainingsSectionProps {

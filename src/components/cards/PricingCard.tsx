@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Check } from 'lucide-react';
-import { TrainingPackage } from '../types';
-import Button, { ButtonVariant } from './Button';
+import { TrainingPackage } from '../../types';
+import Button, { ButtonVariant } from '../Button';
 
 interface PricingCardProps {
   pkg: TrainingPackage;
