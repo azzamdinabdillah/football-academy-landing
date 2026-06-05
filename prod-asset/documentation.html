@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dokumentasi SF Youth Futsal | Elite Training & Academy</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#0070c0',
+              orange: '#ff7f11',
+              dark: '#0a4b8f',
+              deep: '#031b33',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed flex">
+
+  <!-- Sidebar Navigation -->
+  <aside class="w-80 h-screen sticky top-0 bg-slate-900 text-slate-300 flex flex-col justify-between hidden lg:flex border-r border-slate-800 z-30">
+    <div class="p-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-blue to-brand-orange p-[2px]">
+          <div class="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center font-display font-bold text-white text-lg">
+            SF
+          </div>
+        </div>
+        <div>
+          <h1 class="font-display font-bold text-white leading-none">SF Youth Futsal</h1>
+          <p class="text-[10px] text-slate-400 mt-1 uppercase tracking-widest font-semibold">Docs & Dev Guideline</p>
+        </div>
+      </div>
+
+      <nav class="space-y-1">
+        <a href="#overview" class="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition group">
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-orange transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="text-sm font-medium">1. Project Overview</span>
+        </a>
+
+        <a href="#sections" class="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition group">
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-orange transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+          </svg>
+          <span class="text-sm font-medium">2. Website Sections</span>
+        </a>
+
+        <a href="#setup" class="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition group">
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-orange transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <span class="text-sm font-medium">3. Project Setup</span>
+        </a>
+
+        <a href="#structure" class="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition group">
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-orange transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2z" />
+          </svg>
+          <span class="text-sm font-medium">4. File Structure</span>
+        </a>
+
+        <a href="#edit" class="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition group">
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-orange transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+          </svg>
+          <span class="text-sm font-medium">5. How to Edit Website</span>
+        </a>
+
+        <a href="#design" class="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition group">
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-orange transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+          </svg>
+          <span class="text-sm font-medium">6. Design System</span>
+        </a>
+
+        <a href="#production" class="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition group">
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-orange transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 11l7-7 7 7M5 19l7-7 7 7" />
+          </svg>
+          <span class="text-sm font-medium">7. Up to Production</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- Sidebar Footer -->
+    <div class="p-6 border-t border-slate-800 text-xs text-slate-500">
+      <p>Developer Documentation v1.0</p>
+      <p class="mt-1">Last updated: June 2026</p>
+    </div>
+  </aside>
+
+  <!-- Main Content Panel -->
+  <main class="flex-1 min-h-screen overflow-y-auto px-6 py-12 lg:px-16 lg:py-16 max-w-5xl mx-auto">
+    <div class="space-y-16">
+
+      <!-- Header Title Section -->
+      <header class="border-b border-slate-200 pb-8">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-orange">Official Technical Guide</span>
+        <h2 class="font-display font-black text-slate-900 text-4xl lg:text-5xl mt-2 tracking-tight">Dokumentasi Pengembangan Web</h2>
+        <p class="text-slate-500 mt-3 text-lg leading-relaxed">Panduan lengkap mengenai arsitektur kode, struktur modul, sistem desain, penataan visual, dan langkah peluncuran ke server produksi untuk portal <strong>SF Youth Futsal</strong>.</p>
+      </header>
+
+      <!-- 1. Project Overview -->
+      <section id="overview" class="scroll-mt-16 space-y-4">
+        <div class="flex items-center gap-3">
+          <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue font-bold font-display">1</span>
+          <h3 class="font-display font-bold text-slate-900 text-2xl">Project Overview</h3>
+        </div>
+        <p class="text-slate-600">
+          <strong>SF Youth Futsal | Elite Training & Academy</strong> adalah aplikasi berbasis landing-page dinamis dan sistem reservasi interaktif yang dirancang khusus untuk atlet muda berbakat dalam rentang usia 5 hingga 18 tahun (U5 - U18).
+        </p>
+        <p class="text-slate-600">
+          Aplikasi ini dirancang untuk memberikan pengalaman digital kelas dunia dengan visual modern layaknya klub olahraga profesional mancanegara. Dilengkapi animasi transisi super halus (60FPS), navigasi presisi, widget interaktif, formulir registrasi multi-step, serta panel drawer monitoring data pemesanan atau jadwal yang divalidasi dan disimpan di sisi klien secara instan.
+        </p>
+
+        <!-- Tech Stack Badge Grid -->
+        <h4 class="font-semibold text-slate-900 text-sm mt-6 uppercase tracking-wider">Teknologi Utama yang Digunakan</h4>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-3">
+          <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center">
+            <span class="text-brand-blue font-display font-black text-xl">React 18</span>
+            <span class="text-slate-400 text-[10px] uppercase font-bold mt-1">UIdesigns & State</span>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center">
+            <span class="text-indigo-600 font-display font-black text-xl">TypeScript</span>
+            <span class="text-slate-400 text-[10px] uppercase font-bold mt-1">Type Safety & Enums</span>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center">
+            <span class="text-sky-500 font-display font-black text-xl">Tailwind CSS</span>
+            <span class="text-slate-400 text-[10px] uppercase font-bold mt-1">Utility-First Engine</span>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center">
+            <span class="text-pink-500 font-display font-black text-sm uppercase">Framer Motion</span>
+            <span class="text-slate-400 text-[10px] uppercase font-bold mt-2">Smooth Animations</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Website Sections -->
+      <section id="sections" class="scroll-mt-16 space-y-4">
+        <div class="flex items-center gap-3">
+          <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue font-bold font-display">2</span>
+          <h3 class="font-display font-bold text-slate-900 text-2xl">Aplikasi Website Sections (Modul UI)</h3>
+        </div>
+        <p class="text-slate-600">Website ini terbagi ke dalam beberapa layout section dan komponen modular yang saling terisolasi dengan baik:</p>
+        
+        <div class="space-y-4 mt-4">
+          <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-2">
+            <h4 class="font-display font-bold text-slate-900 text-lg flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-brand-orange inline-block"></span> Header & Navbar Component
+            </h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Menampilkan brand logo, tautan navigasi anchor-scrolling, status penghitung keranjang reservasi aktif secara berkelanjutan, dan tombol pemesanan instan.</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-2">
+            <h4 class="font-display font-bold text-slate-900 text-lg flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-brand-orange inline-block"></span> Hero Section
+            </h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Bagian pembuka dengan visual imersif berupa background berkualitas tinggi, judul megah menggunakan font olahraga <strong>Space Grotesk</strong>, serta lencana keunggulan (Awards, Rating Bintang) untuk membangun impresi profesional terbaik bagi calon pelanggan.</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-2">
+            <h4 class="font-display font-bold text-slate-900 text-lg flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-brand-orange inline-block"></span> About Academy Section
+            </h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Mencakup informasi terperinci mengenai filosofi futsal modern, visi jangka panjang, pencapaian tim kepelatihan bersertifikat, dan galeri interaktif program pembinaan atlet muda dari dasar hingga kelompok elit.</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-2">
+            <h4 class="font-display font-bold text-slate-900 text-lg flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-brand-orange inline-block"></span> Futsal Camps & Tournaments Section
+            </h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Bagian grid interaktif yang menyajikan program musiman seperti Summer Camps atau kompetisi antar akademi lengkap dengan lokasi spesifik, rentang usia, slot tersisa, dan tombol pendaftaran langsung.</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-2">
+            <h4 class="font-display font-bold text-slate-900 text-lg flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-brand-orange inline-block"></span> Elite Training Packages Section
+            </h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Daftar skema langganan latihan rutin lengkap dengan rincian biaya, jadwal pertemuan latihan per minggu, rasio pelatih berlisensi dengan murid, dan opsi pendaftaran instan.</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-2">
+            <h4 class="font-display font-bold text-slate-900 text-lg flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-brand-orange inline-block"></span> Parent reviews / Testimonials Section
+            </h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Dipercantik dengan sistem carousel atau penataan asimetris bento, menyajikan umpan balik asli dari orang tua siswa dan cerita kesuksesan alumni pelatihan akademi.</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-2">
+            <h4 class="font-display font-bold text-slate-900 text-lg flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-brand-orange inline-block"></span> Contact Us Section
+            </h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Formulir feedback pengguna yang terstruktur dengan detail alamat olahraga, koordinat lokasi latihan, sosial media resmi akademi, serta jam buka layanan harian.</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-2">
+            <h4 class="font-display font-bold text-slate-900 text-lg flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-slate-900 inline-block"></span> BookingModal (Modals)
+            </h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Pop-up interaktif multi-step dengan transisi halus dari library <strong>Framer Motion</strong> yang membimbing pengguna mengisi data pendaftaran, opsi kategori slot latihan/kamp, hari pelaksanaan, nama anak didik, dan pengisian catatan tambahan.</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-2">
+            <h4 class="font-display font-bold text-slate-900 text-lg flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-slate-900 inline-block"></span> MyBookingsDrawer (Drawers)
+            </h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Laci samping geser kanan (smooth sliding drawer) untuk memantau, memeriksa ulang, menetapkan status konfirmasi, atau membatalkan reservasi pendaftaran aktif yang telah tersimpan di <code>localStorage</code> perangkat pengguna.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Setup Project -->
+      <section id="setup" class="scroll-mt-16 space-y-4">
+        <div class="flex items-center gap-3">
+          <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue font-bold font-display">3</span>
+          <h3 class="font-display font-bold text-slate-900 text-2xl">Project Setup (Langkah Dasar Awal)</h3>
+        </div>
+        <p class="text-slate-600">Berikut adalah daftar persiapan dan langkah instalasi untuk menjalankan aplikasi ini dari awal (scratch) secara lokal di lokal workstation pengembang:</p>
+        
+        <h4 class="font-semibold text-slate-900 text-sm mt-6 uppercase tracking-wider">Persyaratan Sistem sebelum Mulai (Prerequisites)</h4>
+        <ul class="list-disc pl-5 text-sm text-slate-600 space-y-2">
+          <li><strong>Node.js:</strong> Disarankan Node LTS versi 18.x atau yang lebih baru (v20+ direkomendasikan).</li>
+          <li><strong>NPM / PNPM / Yarn:</strong> Node Package Manager bawaan minimal versi 9+ yang andal.</li>
+          <li><strong>Penyunting Kode (Editor):</strong> Visual Studio Code yang dilengkapi ekstensi Tailwind CSS, ESLint, dan Prettier.</li>
+        </ul>
+
+        <h4 class="font-semibold text-slate-900 text-sm mt-6 uppercase tracking-wider">Langkah Setup Menit-demi-Menit</h4>
+        
+        <div class="space-y-3">
+          <div class="bg-slate-900 text-slate-200 rounded-xl p-4 font-mono text-xs overflow-x-auto border border-slate-800">
+            <p class="text-slate-500"># 1. Ekstrak / Clone repositori proyek akademi futsal ini</p>
+            <p><span class="text-brand-orange">git clone</span> https://github.com/username/sf-youth-futsal.git</p>
+            <p><span class="text-brand-orange">cd</span> sf-youth-futsal</p>
+            <p class="text-slate-500 mt-3"># 2. Lakukan instalasi seluruh library & modul ketergantungan (dependencies)</p>
+            <p><span class="text-brand-orange">npm</span> install</p>
+            <p class="text-slate-500 mt-3"># 3. Jalankan server lokal untuk mode pengembangan (Development Mode)</p>
+            <p><span class="text-brand-orange">npm run</span> dev</p>
+          </div>
+        </div>
+
+        <p class="text-slate-600 text-sm">Jika server pengembangan berjalan dengan sukses, Anda dapat membuka halaman demonstrasi live di peramban (browser) Anda pada alamat port lokal: <code class="font-mono bg-slate-100 px-1 py-0.5 rounded text-brand-blue">http://localhost:3000</code>.</p>
+      </section>
+
+      <!-- 4. File Structure -->
+      <section id="structure" class="scroll-mt-16 space-y-4">
+        <div class="flex items-center gap-3">
+          <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue font-bold font-display">4</span>
+          <h3 class="font-display font-bold text-slate-900 text-2xl">File & Directory Structure</h3>
+        </div>
+        <p class="text-slate-600">Aplikasi ini menganut penataan struktur direktori yang elegan, rapi, dan terarsitektur secara fungsional. Berikut visualisasi representatifnya:</p>
+
+        <!-- Code Block Simulation with Folder Structures -->
+        <div class="bg-slate-900 text-slate-300 rounded-2xl p-5 font-mono text-xs space-y-2 border border-slate-800 custom-scrollbar overflow-x-auto">
+          <div>sf-youth-futsal/</div>
+          <div class="pl-4 text-slate-500">├── prod-asset/ <span class="text-slate-600">// Tempat penyimpanan gambar promosi, cover & panduan ini</span></div>
+          <div class="pl-8 text-emerald-400">├── cover.png <span class="text-slate-600">// Desain mockup cover marketing dengan rasio 8:5</span></div>
+          <div class="pl-8 text-emerald-400">├── documentation.html <span class="text-slate-600">// Dokumen panduan yang sedang Anda baca saat ini</span></div>
+          <div class="pl-8">└── f-1.png ... f-7.png, full-page.png <span class="text-slate-600">// Potret screenshot asli antarmuka situs</span></div>
+          <div class="pl-4">├── src/</div>
+          <div class="pl-8 text-amber-400">├── App.tsx <span class="text-slate-500">// Penghubung utama modul, layout page, dan kontrol state booking</span></div>
+          <div class="pl-8">├── main.tsx <span class="text-slate-500">// Entrypoint render virtual DOM React ke file HTML</span></div>
+          <div class="pl-8 text-blue-400">├── index.css <span class="text-slate-500">// Pengaturan global styles, variabel font & load utility Tailwind</span></div>
+          <div class="pl-8 text-yellow-500">├── types.ts <span class="text-slate-500">// Master definisi struktur, antarmuka (interface), tipe data</span></div>
+          <div class="pl-8">├── components/</div>
+          <div class="pl-12 text-teal-400">├── Button.tsx <span class="text-slate-500">// Komponen tombol terstandar dengan ragam variasi warna</span></div>
+          <div class="pl-12 text-teal-400">├── CustomCursor.tsx <span class="text-slate-500">// Efek pemanis pointer kustom futsal yang responsif</span></div>
+          <div class="pl-12 text-teal-400">├── Navbar.tsx <span class="text-slate-500">// Menu navigasi navigasi atas dan notifikasi pemesanan</span></div>
+          <div class="pl-12 text-teal-400">├── SectionHeader.tsx <span class="text-slate-500">// Wrapper judul header tiap area seksional situs</span></div>
+          <div class="pl-12">├── cards/ <span class="text-slate-600">// Sub-folder pengelompokan komponen berupa kartu informasi</span></div>
+          <div class="pl-16">├── CampCard.tsx <span class="text-slate-500">// Kartu promo camp pendaftaran</span></div>
+          <div class="pl-16">├── PricingCard.tsx <span class="text-slate-500">// Kartu daftar harga & detail paket elite</span></div>
+          <div class="pl-16">└── TestimonialCard.tsx <span class="text-slate-500">// Kartu kutipan ulasan wali murid</span></div>
+          <div class="pl-12">├── modals/ <span class="text-slate-600">// Sub-folder untuk dialog box, pop-up modal, drawer mengapung</span></div>
+          <div class="pl-16">├── BookingModal.tsx <span class="text-slate-500">// Pop-up multi-step register form</span></div>
+          <div class="pl-16">└── MyBookingsDrawer.tsx <span class="text-slate-500">// Laci status pemantauan list reservasi</span></div>
+          <div class="pl-12">├── sections/ <span class="text-slate-600">// Sub-folder untuk menata setiap luas blok layout halaman</span></div>
+          <div class="pl-16">├── Hero.tsx <span class="text-slate-500">// Layangan hero banner utama, lencana piala akademi</span></div>
+          <div class="pl-16">├── AboutSection.tsx <span class="text-slate-500">// Histori akademi, daftar kelebihan didaktis</span></div>
+          <div class="pl-16">├── CampsSection.tsx <span class="text-slate-500">// Area listing modul pendaftaran Summer Training</span></div>
+          <div class="pl-16">├── TrainingsSection.tsx <span class="text-slate-500">// Daftar penawaran langganan scouting reguler</span></div>
+          <div class="pl-16">├── TestimonialsSection.tsx <span class="text-slate-500">// Sebaran grid kutipan kepuasan atlet didikan</span></div>
+          <div class="pl-16">└── ContactSection.tsx <span class="text-slate-500">// Informasi peta fisik, jam operasional, link sosial media</span></div>
+          <div class="pl-4">├── index.html <span class="text-slate-500">// File wadah target render React, setting Judul & Favicon</span></div>
+          <div class="pl-4">├── package.json <span class="text-slate-500">// Metadata projek, script perintah build, pustaka module list</span></div>
+          <div class="pl-4">└── vite.config.ts <span class="text-slate-500">// Bundler konfigurasi Vite, HMR, & environment routing</span></div>
+        </div>
+      </section>
+
+      <!-- 5. How to Edit Website -->
+      <section id="edit" class="scroll-mt-16 space-y-4">
+        <div class="flex items-center gap-3">
+          <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue font-bold font-display">5</span>
+          <h3 class="font-display font-bold text-slate-900 text-2xl">Bagaimana Cara Mengedit Website Ini?</h3>
+        </div>
+        <p class="text-slate-600">Panduan praktis untuk melakukan kustomisasi data, mengubah dekorasi visual, mengubah asset atau menyisipkan konten baru:</p>
+        
+        <div class="space-y-6 mt-4">
+          <div class="border-l-4 border-brand-blue pl-4 py-1">
+            <h4 class="font-bold text-slate-900 text-base">Ubah Konten Teks, Program Camp, dan Pilihan Paket Latihan</h4>
+            <p class="text-sm text-slate-600 mt-1">
+              Seluruh data statis, seperti detail paket <strong>Futsal Camp</strong> dan <strong>Training Package</strong> didefinisikan secara dinamis menggunakan struktur data pada file utama <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">src/App.tsx</strong>. Cari variabel array tersebut (misalnya <code class="font-mono text-xs text-brand-blue bg-blue-50 px-1 py-0.5 rounded">INITIAL_CAMPS</code> dan <code class="font-mono text-xs text-brand-blue bg-blue-50 px-1 py-0.5 rounded">INITIAL_PACKAGES</code>) untuk mengedit judul program, pelatih, nominal harga, lokasi latihan, maupun kuota slot terdaftar.
+            </p>
+          </div>
+
+          <div class="border-l-4 border-brand-blue pl-4 py-1">
+            <h4 class="font-bold text-slate-900 text-base">Ubah Icon & Grafik SVG</h4>
+            <p class="text-sm text-slate-600 mt-1">
+              Situs ini memakai perpustakaan <strong>Lucide React</strong> sebagai penyedia icon bawaan. Jika Anda ingin mengganti icon pada tombol atau badge, Anda dapat mengimpor icon yang sesuai dari <code class="font-mono text-xs text-brand-blue bg-blue-50 px-1 py-0.5 rounded">"lucide-react"</code> pada header file komponen Anda, lalu menyisipkannya menggunakan JSX standar (misal: <code>&lt;Trophy className="w-5 h-5" /&gt;</code>).
+            </p>
+          </div>
+
+          <div class="border-l-4 border-brand-blue pl-4 py-1">
+            <h4 class="font-bold text-slate-900 text-base">Sesuaikan Struktur Validasi Pendaftaran (Form Input)</h4>
+            <p class="text-sm text-slate-600 mt-1">
+              Untuk mengedit field input, mengubah maksimal usia siswa futsal, atau menetapkan batasan jadwal hari pada sistem pendaftaran, Anda dapat menyunting file formulir di <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">src/components/modals/BookingModal.tsx</strong>. Gunakan skema validasi React State untuk menambah atau mengurangi field dropship.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Design System -->
+      <section id="design" class="scroll-mt-16 space-y-4">
+        <div class="flex items-center gap-3">
+          <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue font-bold font-display">6</span>
+          <h3 class="font-display font-bold text-slate-900 text-2xl">Design System & Visual Guideline</h3>
+        </div>
+        <p class="text-slate-600">Aplikasi ini memadukan estetika fungsionalitas olahraga kecepatan tinggi dengan kenyamanan kontras warna yang ramah mata. Di bawah merupakan pedoman visual yang mengaturnya:</p>
+
+        <h4 class="font-semibold text-slate-900 text-sm mt-6 uppercase tracking-wider">Aksentuasi Palet Warna (Color Palette)</h4>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-3">
+          <div class="bg-white p-3 rounded-xl border border-slate-200/60 shadow-sm">
+            <div class="w-full h-12 rounded-lg bg-[#0070c0] mb-2 shadow-inner"></div>
+            <div class="text-xs font-bold text-slate-900">Brand Royal Blue</div>
+            <div class="text-[10px] text-slate-400 font-mono">#0070c0</div>
+            <div class="text-[9px] text-slate-500 mt-1">Utama, lencana kredensial, visualisai garis ikon olahraga.</div>
+          </div>
+          <div class="bg-white p-3 rounded-xl border border-slate-200/60 shadow-sm">
+            <div class="w-full h-12 rounded-lg bg-[#ff7f11] mb-2 shadow-inner"></div>
+            <div class="text-xs font-bold text-slate-900">Brand Vivid Orange</div>
+            <div class="text-[10px] text-slate-400 font-mono">#ff7f11</div>
+            <div class="text-[9px] text-slate-500 mt-1">Tombol CTA aksi pendaftaran, lencana dinamis api membara.</div>
+          </div>
+          <div class="bg-white p-3 rounded-xl border border-slate-200/60 shadow-sm">
+            <div class="w-full h-12 rounded-lg bg-[#0a4b8f] mb-2 shadow-inner"></div>
+            <div class="text-xs font-bold text-slate-900">Deep Oceanic Blue</div>
+            <div class="text-[10px] text-slate-400 font-mono">#0a4b8f</div>
+            <div class="text-[9px] text-slate-500 mt-1">Warna latar gradasi, header box modal, teks bayangan elit.</div>
+          </div>
+          <div class="bg-white p-3 rounded-xl border border-slate-200/60 shadow-sm">
+            <div class="w-full h-12 rounded-lg bg-[#1e293b] mb-2 shadow-inner"></div>
+            <div class="text-xs font-bold text-slate-900">Slate Charcoal Black</div>
+            <div class="text-[10px] text-slate-400 font-mono">#1e293b</div>
+            <div class="text-[9px] text-slate-500 mt-1">Warna dasawarsa footer, tepi-tepian garis desain, teks isi.</div>
+          </div>
+        </div>
+
+        <h4 class="font-semibold text-slate-900 text-sm mt-6 uppercase tracking-wider">Sistem Tipografi Pasangan Font (Typography Pairing)</h4>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
+          <div class="space-y-1">
+            <span class="text-[10px] font-mono font-bold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">Font Judul / Display Heading</span>
+            <div class="font-display font-bold text-slate-950 text-xl tracking-tight">"Space Grotesk" atau "Outfit"</div>
+            <p class="text-xs text-slate-500">Mencerminkan akselerasi, presisi garis tangkas olahraga futsal modern, berjiwa muda, dinamis.</p>
+          </div>
+          <div class="space-y-1">
+            <span class="text-[10px] font-mono font-bold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">Font Badan Teks / Body Text</span>
+            <div class="font-sans font-medium text-slate-950 text-sm">"Inter" (Regular, Medium, Semi-bold)</div>
+            <p class="text-xs text-slate-500">Memberikan kemudahan membaca tinggi (legibility) di layar mobile terkecil sekalipun.</p>
+          </div>
+          <div class="space-y-1">
+            <span class="text-[10px] font-mono font-bold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">Font Tag / Data Status</span>
+            <div class="font-mono font-semibold text-slate-950 text-xs">"JetBrains Mono"</div>
+            <p class="text-xs text-slate-500">Bagus untuk teks bernuansa teknis, tabel kode reservasi, kuota sisa kursi latihan.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Up to Production -->
+      <section id="production" class="scroll-mt-16 space-y-4">
+        <div class="flex items-center gap-3">
+          <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue font-bold font-display">7</span>
+          <h3 class="font-display font-bold text-slate-900 text-2xl">Langkah Deploy ke Server Production</h3>
+        </div>
+        <p class="text-slate-600">Ketika pengembangan fitur dirasa matang dan siap dipublikasikan secara global untuk publik, jalankan instruksi optimasi berikut:</p>
+        
+        <h4 class="font-semibold text-slate-900 text-sm mt-6 uppercase tracking-wider">1. Jalankan Perintah Kompilasi Berkas (Optimization Build)</h4>
+        <p class="text-slate-600 text-sm">Jalankan perintah berikut pada terminal root proyek untuk memangkas ukuran kode dan aset guna meningkatkan waktu muat halaman secara instan di peramban:</p>
+        <div class="bg-slate-900 text-slate-200 rounded-xl p-4 font-mono text-xs border border-slate-800">
+          <p><span class="text-brand-orange">npm run</span> build</p>
+        </div>
+        <p class="text-slate-600 text-sm">Perintah ini akan memproses file TypeScript, memangkas CSS Tailwind yang tidak terpakai (tree-shaking), lalu mengumpulkan berkas akhir yang super ringan ke dalam direktori keluaran statis bernama <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">dist/</strong>.</p>
+
+        <h4 class="font-semibold text-slate-900 text-sm mt-6 uppercase tracking-wider">2. Unggah Folder Statis "dist/" ke Platform Hosting</h4>
+        <p class="text-slate-600 text-sm">Anda dapat meluncurkan folder <code class="font-mono bg-slate-100 px-1 py-0.5 text-xs rounded">dist/</code> ke berbagai penyedia hosting modern seperti:</p>
+        <ul class="list-disc pl-5 text-sm text-slate-600 space-y-2">
+          <li><strong>Vercel / Netlify:</strong> Sangat disarankan karena otomatisasi Git yang mudah. Cukup kaitkan repositori ini ke dasbor Vercel/Netlify Anda untuk proses deploy instan setiap ada push perubahan.</li>
+          <li><strong>Google Cloud Run / VPS:</strong> Jika aplikasi Anda dijalankan dalam container Docker, Anda dapat memanfaatkan script pembantu dan server CJS bawaan yang ada di <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">dist/server.cjs</strong> yang menyajikan static assets menggunakan engine Express.</li>
+        </ul>
+      </section>
+
+      <!-- Document Ending Accent / Professional Credit Line -->
+      <footer class="border-t border-slate-200 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400">
+        <p>© 2026 SF Youth Futsal Academy. Hak Cipta Dilindungi Undang-Undang.</p>
+        <p class="mt-2 sm:mt-0 font-medium">Dokumen Panduan Teknis & Arsitektur</p>
+      </footer>
+
+    </div>
+  </main>
+
+</body>
+</html>
