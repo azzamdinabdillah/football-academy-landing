@@ -37,6 +37,18 @@ export default function BookingModal({
   const [createdBooking, setCreatedBooking] = useState<Booking | null>(null);
   const [formError, setFormError] = useState('');
 
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   // Handle preselected package/camp on load or preselectedId change
   useEffect(() => {
     if (preselectedId) {
@@ -168,6 +180,7 @@ export default function BookingModal({
           exit={{ opacity: 0, scale: 0.9, y: 30 }}
           transition={{ type: "spring", damping: 25, stiffness: 350 }}
           className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden z-10 border border-neutral-100 max-h-[94vh] flex flex-col"
+          data-lenis-prevent="true"
         >
           {/* Header */}
           <div className="flex items-center justify-between p-4 sm:p-6 border-b border-slate-100 bg-brand-blue text-white">
@@ -187,7 +200,7 @@ export default function BookingModal({
             </button>
           </div>
 
-          <div className="overflow-y-auto flex-1 p-4 sm:p-6">
+          <div className="overflow-y-auto flex-1 p-4 sm:p-6 overscroll-contain" data-lenis-prevent="true">
             {step === 1 ? (
               // STEP 1: FORM FILLING
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">

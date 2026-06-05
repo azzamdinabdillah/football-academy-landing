@@ -17,6 +17,18 @@ export default function MyBookingsDrawer({
   bookings,
   onCancelBooking
 }: MyBookingsDrawerProps) {
+  // Lock body scroll when drawer is open
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -38,6 +50,7 @@ export default function MyBookingsDrawer({
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 28, stiffness: 300 }}
               className="w-screen max-w-md bg-white flex flex-col shadow-2xl border-l border-neutral-100"
+              data-lenis-prevent="true"
             >
               {/* Drawer Title Section */}
               <div className="p-6 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
@@ -57,7 +70,7 @@ export default function MyBookingsDrawer({
               </div>
 
               {/* Drawer Content */}
-              <div className="flex-1 overflow-y-auto p-6 space-y-6">
+              <div className="flex-1 overflow-y-auto p-6 space-y-6 overscroll-contain" data-lenis-prevent="true">
                 {bookings.length === 0 ? (
                   <div className="h-[60vh] flex flex-col items-center justify-center text-center space-y-4">
                     <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100 text-slate-400">

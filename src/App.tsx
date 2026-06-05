@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Sparkles, ArrowUp, Milestone, Heart } from 'lucide-react';
 import Lenis from 'lenis';
 
@@ -31,6 +31,8 @@ export default function App() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [preselectedId, setPreselectedId] = useState<string | undefined>(undefined);
 
+  const lenisRef = useRef<Lenis | null>(null);
+
   // Load Lenis smooth scroll on mount
   useEffect(() => {
     const lenis = new Lenis({
@@ -40,6 +42,8 @@ export default function App() {
       gestureOrientation: 'vertical',
       smoothWheel: true,
     });
+
+    lenisRef.current = lenis;
 
     let rafId: number;
     function raf(time: number) {
@@ -52,8 +56,38 @@ export default function App() {
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
+
+  // Control scrolling when modal or drawer is open
+  useEffect(() => {
+    const lenis = lenisRef.current;
+    if (isBookingOpen || isDrawerOpen) {
+      if (lenis) {
+        lenis.stop();
+      }
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      document.body.classList.add('lenis-stopped');
+      document.documentElement.classList.add('lenis-stopped');
+    } else {
+      if (lenis) {
+        lenis.start();
+      }
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.body.classList.remove('lenis-stopped');
+      document.documentElement.classList.remove('lenis-stopped');
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.body.classList.remove('lenis-stopped');
+      document.documentElement.classList.remove('lenis-stopped');
+    };
+  }, [isBookingOpen, isDrawerOpen]);
 
   // Load bookings on mount
   useEffect(() => {
