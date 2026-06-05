@@ -113,12 +113,12 @@ export default function BookingModal({
     setFormError('');
 
     if (!playerName.trim() || !parentName.trim() || !parentEmail.trim() || !parentPhone.trim() || !selectedDate) {
-      setFormError('Sila isi semua ruangan yang wajib diisi. (Please fill in all required fields.)');
+      setFormError('Please fill in all required fields.');
       return;
     }
 
     if (playerAge < 5 || playerAge > 20) {
-      setFormError('Umur pemain mestilah antara 5 sehingga 20 tahun. (Player age must be 5-20 years.)');
+      setFormError('Player age must be between 5 and 20 years old.');
       return;
     }
 
@@ -192,7 +192,7 @@ export default function BookingModal({
               <Trophy className="w-5 h-5 sm:w-6 sm:h-6 text-amber-300 flex-shrink-0 animate-bounce" />
               <div>
                 <h3 className="font-display font-bold text-sm sm:text-lg tracking-tight leading-tight">Futsal Academy Booking System</h3>
-                <p className="text-[10px] sm:text-xs text-blue-100">Daftar Slot Latihan & Camp SF Youth Futsal</p>
+                <p className="text-[10px] sm:text-xs text-blue-100">Register for SF Youth Futsal Training Slots & Camps</p>
               </div>
             </div>
             <button
@@ -459,7 +459,7 @@ export default function BookingModal({
                     size="md"
                     className="w-full sm:flex-1 border border-slate-300 rounded-xl hover:bg-slate-50 text-slate-700 font-semibold"
                   >
-                    Cetak Resit (Print Ticket)
+                    Print Ticket
                   </Button>
                   <Button
                     onClick={handleResetClose}

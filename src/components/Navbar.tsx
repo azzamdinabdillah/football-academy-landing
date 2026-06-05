@@ -92,7 +92,7 @@ export default function Navbar({ bookingsCount, onOpenBookings, onOpenBookingMod
             size="md"
             className="relative border border-slate-200 hover:border-brand-blue/30 hover:bg-blue-50/40 text-slate-700 font-bold"
             leftIcon={<Ticket className="w-4.5 h-4.5" />}
-            title="Lihat Pendaftaran Saya"
+            title="View My Bookings"
           >
             {bookingsCount > 0 && (
               <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center font-bold text-[10px] animate-bounce z-10 animate-pulse">
