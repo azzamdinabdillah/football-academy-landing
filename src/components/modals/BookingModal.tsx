@@ -1,12 +1,29 @@
 import React, { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Calendar, User, Mail, Phone, Flame, Check, HelpCircle, Trophy, Ticket, AlertTriangle } from 'lucide-react';
+import { X, Calendar, User, Mail, Phone, Flame, Check, Trophy, Ticket, AlertTriangle } from 'lucide-react';
 import { FutsalCamp, TrainingPackage, Booking } from '../../types';
 import Button from '../Button';
 import Input from '../form/Input';
 import Select from '../form/Select';
 import DateInput from '../form/DateInput';
 import Textarea from '../form/Textarea';
+
+const bookingSchema = z.object({
+  playerName: z.string().min(1, 'Player full name is required'),
+  playerAge: z.number().min(5, 'Player age must be at least 5').max(20, 'Player age must be at most 20'),
+  parentName: z.string().min(1, 'Parent/Guardian name is required'),
+  parentEmail: z.string().min(1, 'Email address is required').email('Invalid email address'),
+  parentPhone: z.string().min(1, 'Contact phone is required'),
+  bookingType: z.enum(['Camp', 'Training']),
+  selectedItemId: z.string().min(1, 'Selected program is required'),
+  selectedDate: z.string().min(1, 'Session / Start date is required'),
+  notes: z.string().optional()
+});
+
+type BookingFormValues = z.infer<typeof bookingSchema>;
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -25,21 +42,34 @@ export default function BookingModal({
   camps,
   trainings
 }: BookingModalProps) {
-  // Booking Form State
-  const [playerName, setPlayerName] = useState('');
-  const [playerAge, setPlayerAge] = useState<number>(10);
-  const [parentName, setParentName] = useState('');
-  const [parentEmail, setParentEmail] = useState('');
-  const [parentPhone, setParentPhone] = useState('');
-  const [bookingType, setBookingType] = useState<'Camp' | 'Training'>('Camp');
-  const [selectedItemId, setSelectedItemId] = useState('');
-  const [selectedDate, setSelectedDate] = useState('');
-  const [notes, setNotes] = useState('');
-
-  // UI Flow State
   const [step, setStep] = useState<1 | 2>(1); // 1: Form, 2: Ticket Ticket SFX
   const [createdBooking, setCreatedBooking] = useState<Booking | null>(null);
-  const [formError, setFormError] = useState('');
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    reset,
+    formState: { errors }
+  } = useForm<BookingFormValues>({
+    resolver: zodResolver(bookingSchema),
+    defaultValues: {
+      playerName: '',
+      playerAge: 10,
+      parentName: '',
+      parentEmail: '',
+      parentPhone: '',
+      bookingType: 'Camp',
+      selectedItemId: '',
+      selectedDate: '',
+      notes: ''
+    }
+  });
+
+  const bookingType = watch('bookingType');
+  const selectedItemId = watch('selectedItemId');
+  const selectedDate = watch('selectedDate');
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -58,38 +88,36 @@ export default function BookingModal({
     if (preselectedId) {
       const campExists = camps.find(c => c.id === preselectedId);
       if (campExists) {
-        setBookingType('Camp');
-        setSelectedItemId(campExists.id);
-        // Default to first camp date range
-        setSelectedDate(campExists.dates.split(' - ')[0] || '2026-06-22');
+        setValue('bookingType', 'Camp');
+        setValue('selectedItemId', campExists.id);
+        setValue('selectedDate', campExists.dates.split(' - ')[0] || '2026-06-22');
       } else {
         const trainExists = trainings.find(t => t.id === preselectedId);
         if (trainExists) {
-          setBookingType('Training');
-          setSelectedItemId(trainExists.id);
-          // Default to a realistic weekday
-          setSelectedDate('2026-06-24');
+          setValue('bookingType', 'Training');
+          setValue('selectedItemId', trainExists.id);
+          setValue('selectedDate', '2026-06-24');
         }
       }
     } else {
       // Set default
       if (camps.length > 0) {
-        setBookingType('Camp');
-        setSelectedItemId(camps[0].id);
-        setSelectedDate('2026-06-22');
+        setValue('bookingType', 'Camp');
+        setValue('selectedItemId', camps[0].id);
+        setValue('selectedDate', '2026-06-22');
       }
     }
-  }, [preselectedId, isOpen, camps, trainings]);
+  }, [preselectedId, isOpen, camps, trainings, setValue]);
 
   // Adjust preselected ID when bookingType changes manually
   const handleTypeChange = (type: 'Camp' | 'Training') => {
-    setBookingType(type);
+    setValue('bookingType', type);
     if (type === 'Camp' && camps.length > 0) {
-      setSelectedItemId(camps[0].id);
-      setSelectedDate('2026-06-22');
+      setValue('selectedItemId', camps[0].id);
+      setValue('selectedDate', '2026-06-22');
     } else if (type === 'Training' && trainings.length > 0) {
-      setSelectedItemId(trainings[0].id);
-      setSelectedDate('2026-06-24');
+      setValue('selectedItemId', trainings[0].id);
+      setValue('selectedDate', '2026-06-24');
     }
   };
 
@@ -108,35 +136,22 @@ export default function BookingModal({
     return training ? training.pricePerSession : 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormError('');
-
-    if (!playerName.trim() || !parentName.trim() || !parentEmail.trim() || !parentPhone.trim() || !selectedDate) {
-      setFormError('Please fill in all required fields.');
-      return;
-    }
-
-    if (playerAge < 5 || playerAge > 20) {
-      setFormError('Player age must be between 5 and 20 years old.');
-      return;
-    }
-
+  const onSubmit = (data: BookingFormValues) => {
     const itemTitle = currentItemTitle();
     const ticketCode = `SFYF-${Math.floor(1000 + Math.random() * 9000)}`;
 
     const newBooking: Booking = {
       id: Math.random().toString(36).substring(2, 9),
-      playerName,
-      playerAge,
-      parentName,
-      parentEmail,
-      parentPhone,
-      selectedPackageId: selectedItemId,
+      playerName: data.playerName,
+      playerAge: data.playerAge,
+      parentName: data.parentName,
+      parentEmail: data.parentEmail,
+      parentPhone: data.parentPhone,
+      selectedPackageId: data.selectedItemId,
       selectedPackageTitle: itemTitle,
-      bookingType,
-      selectedDate,
-      notes,
+      bookingType: data.bookingType,
+      selectedDate: data.selectedDate,
+      notes: data.notes || '',
       createdAt: new Date().toISOString(),
       ticketCode
     };
@@ -153,12 +168,7 @@ export default function BookingModal({
   };
 
   const handleResetClose = () => {
-    // Reset Form
-    setPlayerName('');
-    setParentName('');
-    setParentEmail('');
-    setParentPhone('');
-    setNotes('');
+    reset();
     setStep(1);
     onClose();
   };
@@ -207,11 +217,15 @@ export default function BookingModal({
           <div className="overflow-y-auto flex-1 p-4 sm:p-6 overscroll-contain" data-lenis-prevent="true">
             {step === 1 ? (
               // STEP 1: FORM FILLING
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
-                {formError && (
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-5">
+                {Object.keys(errors).length > 0 && (
                   <div className="flex items-start gap-2 p-3.5 bg-red-50 text-red-700 text-xs rounded-xl border border-red-200">
                     <AlertTriangle className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                    <span>{formError}</span>
+                    <div className="flex flex-col gap-0.5">
+                      {Object.entries(errors).map(([key, err]) => (
+                        <span key={key}>{err?.message}</span>
+                      ))}
+                    </div>
                   </div>
                 )}
 
@@ -247,8 +261,7 @@ export default function BookingModal({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                   <Select
                     label="Selected Program"
-                    value={selectedItemId}
-                    onChange={(e) => setSelectedItemId(e.target.value)}
+                    {...register('selectedItemId')}
                     required
                   >
                     {bookingType === 'Camp'
@@ -266,8 +279,7 @@ export default function BookingModal({
 
                   <DateInput
                     label="Session / Start Date"
-                    value={selectedDate}
-                    onChange={(e) => setSelectedDate(e.target.value)}
+                    {...register('selectedDate')}
                     min="2026-06-02"
                     required
                   />
@@ -284,8 +296,7 @@ export default function BookingModal({
                         label="Player Full Name"
                         type="text"
                         placeholder="e.g. Dani Abdillah"
-                        value={playerName}
-                        onChange={(e) => setPlayerName(e.target.value)}
+                        {...register('playerName')}
                         required
                         icon={<User className="w-3.5 h-3.5" />}
                       />
@@ -297,8 +308,7 @@ export default function BookingModal({
                         type="number"
                         min="5"
                         max="20"
-                        value={playerAge}
-                        onChange={(e) => setPlayerAge(parseInt(e.target.value) || 10)}
+                        {...register('playerAge', { valueAsNumber: true })}
                         required
                       />
                     </div>
@@ -313,8 +323,7 @@ export default function BookingModal({
                     label="Parent/Guardian Name"
                     type="text"
                     placeholder="e.g. Azzam Abdillah"
-                    value={parentName}
-                    onChange={(e) => setParentName(e.target.value)}
+                    {...register('parentName')}
                     required
                   />
 
@@ -323,8 +332,7 @@ export default function BookingModal({
                       label="Email Address"
                       type="email"
                       placeholder="guardian@example.com"
-                      value={parentEmail}
-                      onChange={(e) => setParentEmail(e.target.value)}
+                      {...register('parentEmail')}
                       required
                       icon={<Mail className="w-3.5 h-3.5" />}
                     />
@@ -333,8 +341,7 @@ export default function BookingModal({
                       label="Contact Phone"
                       type="tel"
                       placeholder="+1 (555) 019-2834"
-                      value={parentPhone}
-                      onChange={(e) => setParentPhone(e.target.value)}
+                      {...register('parentPhone')}
                       required
                       icon={<Phone className="w-3.5 h-3.5" />}
                     />
@@ -345,8 +352,7 @@ export default function BookingModal({
                 <Textarea
                   label="Special Notes / Allergies / Experience Level (Optional)"
                   placeholder="Provide any medical details, team experience, or positional focus..."
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)}
+                  {...register('notes')}
                   rows={2}
                 />
 

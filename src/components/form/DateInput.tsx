@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Calendar } from 'lucide-react';
 
 interface DateInputProps {
@@ -12,9 +12,10 @@ interface DateInputProps {
   max?: string;
   disabled?: boolean;
   icon?: React.ReactNode;
+  [key: string]: any;
 }
 
-export default function DateInput({
+const DateInput = forwardRef<HTMLInputElement, DateInputProps>(({
   label,
   value,
   onChange,
@@ -24,8 +25,9 @@ export default function DateInput({
   min,
   max,
   disabled,
-  icon = <Calendar className="w-3.5 h-3.5" />
-}: DateInputProps) {
+  icon = <Calendar className="w-3.5 h-3.5" />,
+  ...rest
+}, ref) => {
   return (
     <div className="w-full">
       <label 
@@ -36,6 +38,7 @@ export default function DateInput({
       </label>
       <div className="relative">
         <input
+          ref={ref}
           id={id}
           type="date"
           value={value}
@@ -44,6 +47,7 @@ export default function DateInput({
           max={max}
           disabled={disabled}
           required={required}
+          {...rest}
           className={`w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 bg-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue pl-9 ${className}`}
         />
         {icon && (
@@ -54,4 +58,9 @@ export default function DateInput({
       </div>
     </div>
   );
-}
+});
+
+DateInput.displayName = 'DateInput';
+
+export default DateInput;
+

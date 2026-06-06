@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 interface InputProps {
   label: string;
@@ -13,9 +13,10 @@ interface InputProps {
   min?: string | number;
   max?: string | number;
   disabled?: boolean;
+  [key: string]: any;
 }
 
-export default function Input({
+const Input = forwardRef<HTMLInputElement, InputProps>(({
   label,
   icon,
   id,
@@ -27,8 +28,9 @@ export default function Input({
   onChange,
   min,
   max,
-  disabled
-}: InputProps) {
+  disabled,
+  ...rest
+}, ref) => {
   return (
     <div className="w-full">
       <label 
@@ -39,6 +41,7 @@ export default function Input({
       </label>
       <div className="relative">
         <input
+          ref={ref}
           id={id}
           type={type}
           placeholder={placeholder}
@@ -48,6 +51,7 @@ export default function Input({
           max={max}
           disabled={disabled}
           required={required}
+          {...rest}
           className={`w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 placeholder-slate-400 bg-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue ${
             icon ? 'pl-9' : ''
           } ${className}`}
@@ -60,4 +64,9 @@ export default function Input({
       </div>
     </div>
   );
-}
+});
+
+Input.displayName = 'Input';
+
+export default Input;
+

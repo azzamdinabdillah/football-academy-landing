@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 export interface SelectOption {
   value: string | number;
@@ -14,9 +14,10 @@ interface SelectProps {
   required?: boolean;
   options?: SelectOption[];
   children?: React.ReactNode;
+  [key: string]: any;
 }
 
-export default function Select({
+const Select = forwardRef<HTMLSelectElement, SelectProps>(({
   label,
   value,
   onChange,
@@ -24,8 +25,9 @@ export default function Select({
   className = '',
   required,
   options = [],
-  children
-}: SelectProps) {
+  children,
+  ...rest
+}, ref) => {
   return (
     <div className="w-full">
       <label 
@@ -36,10 +38,12 @@ export default function Select({
       </label>
       <div className="relative">
         <select
+          ref={ref}
           id={id}
           value={value}
           onChange={onChange}
           required={required}
+          {...rest}
           className={`w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 bg-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue ${className}`}
         >
           {children ? children : options.map((option) => (
@@ -51,4 +55,9 @@ export default function Select({
       </div>
     </div>
   );
-}
+});
+
+Select.displayName = 'Select';
+
+export default Select;
+
