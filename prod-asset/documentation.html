@@ -153,9 +153,9 @@
 
         <!-- Tech Stack Badge Grid -->
         <h4 class="font-semibold text-slate-900 text-sm mt-6 uppercase tracking-wider">Key Technologies Used</h4>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-3">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-3">
           <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center">
-            <span class="text-brand-blue font-display font-black text-xl">React 18</span>
+            <span class="text-brand-blue font-display font-black text-xl">React 19</span>
             <span class="text-slate-400 text-[10px] uppercase font-bold mt-1">UI Design & State</span>
           </div>
           <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center">
@@ -169,6 +169,10 @@
           <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center">
             <span class="text-pink-500 font-display font-black text-sm uppercase">Framer Motion</span>
             <span class="text-slate-400 text-[10px] uppercase font-bold mt-2">Smooth Animations</span>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center">
+            <span class="text-emerald-500 font-display font-black text-sm uppercase">RHF & Zod</span>
+            <span class="text-slate-400 text-[10px] uppercase font-bold mt-2">Form Validation</span>
           </div>
         </div>
       </section>
@@ -350,7 +354,7 @@
           <div class="border-l-4 border-brand-blue pl-4 py-1">
             <h4 class="font-bold text-slate-900 text-base">Adjust Registration Validation Structure (Form Inputs)</h4>
             <p class="text-sm text-slate-600 mt-1">
-              To edit input fields, change the maximum age of student registration, or configure scheduling limits, edit the form file at <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">src/components/modals/BookingModal.tsx</strong>. Use React State logic to add or remove validation rules or fields.
+              To edit input fields, change validation ranges (such as student age group limits), or configure registration requirements, edit the form file at <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">src/components/modals/BookingModal.tsx</strong>. The form is built using <strong>React Hook Form</strong> and <strong>Zod</strong>. You can customize fields and constraints simply by modifying the <code class="font-mono text-xs text-brand-blue bg-blue-50 px-1 py-0.5 rounded">bookingSchema</code> object. Note that the custom inputs inside <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">src/components/form/</strong> are configured with <code class="font-mono text-xs text-brand-blue bg-blue-50 px-1 py-0.5 rounded">React.forwardRef</code> to seamlessly register with the form.
             </p>
           </div>
 
@@ -375,7 +379,7 @@
             </p>
             <ul class="list-disc pl-5 mt-2 text-xs text-slate-600 space-y-1.5">
               <li><strong>Contact Form:</strong> Open <strong class="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded">src/components/sections/ContactSection.tsx</strong>, look for the <code>handleSubmit</code> function, and integrate serverless form handlers like <a href="https://formspree.io/" target="_blank" class="text-brand-blue hover:underline font-semibold">Formspree</a>, <a href="https://web3forms.com/" target="_blank" class="text-brand-blue hover:underline font-semibold">Web3Forms</a>, or <a href="https://www.emailjs.com/" target="_blank" class="text-brand-blue hover:underline font-semibold">EmailJS</a>.</li>
-              <li><strong>Booking Form:</strong> Open <strong class="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded">src/components/modals/BookingModal.tsx</strong>, locate the <code>handleSubmit</code> function, and replace the <code>localStorage</code> push operation with a standard <code>fetch()</code> or <code>axios.post()</code> request sending the payload to your Node/Express/PHP server or Database webhook.</li>
+              <li><strong>Booking Form:</strong> Open <strong class="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded">src/components/modals/BookingModal.tsx</strong>, locate the <code>onSubmit</code> function, and replace the <code>localStorage</code> push operation with a standard <code>fetch()</code> or <code>axios.post()</code> request sending the payload to your Node/Express/PHP server or Database webhook.</li>
             </ul>
           </div>
         </div>
