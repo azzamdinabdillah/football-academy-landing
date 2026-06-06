@@ -295,6 +295,7 @@
           <div class="pl-8">└── f-1.png ... f-7.png, full-page.png <span class="text-slate-600">// Real screenshots of the site interface</span></div>
           <div class="pl-4">├── src/</div>
           <div class="pl-8 text-amber-400">├── App.tsx <span class="text-slate-500">// Main app entry connecting modules, layout pages, and booking state control</span></div>
+          <div class="pl-8 text-yellow-500">├── data.ts <span class="text-slate-500">// Dummy data structure for futsal camps, training packages, and testimonials</span></div>
           <div class="pl-8">├── main.tsx <span class="text-slate-500">// React virtual DOM render entrypoint to HTML</span></div>
           <div class="pl-8 text-blue-400">├── index.css <span class="text-slate-500">// Global styles setting, font variables & Tailwind CSS utilities load</span></div>
           <div class="pl-8 text-yellow-500">├── types.ts <span class="text-slate-500">// Master definitions for structures, interfaces, and data types</span></div>
@@ -335,7 +336,7 @@
           <div class="border-l-4 border-brand-blue pl-4 py-1">
             <h4 class="font-bold text-slate-900 text-base">Change Text Content, Camp Programs, and Training Packages</h4>
             <p class="text-sm text-slate-600 mt-1">
-              All static data, such as details of the <strong>Futsal Camp</strong> and <strong>Training Packages</strong> are dynamically defined using data structures in the main file <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">src/App.tsx</strong>. Search for those array variables (e.g., <code class="font-mono text-xs text-brand-blue bg-blue-50 px-1 py-0.5 rounded">INITIAL_CAMPS</code> and <code class="font-mono text-xs text-brand-blue bg-blue-50 px-1 py-0.5 rounded">INITIAL_PACKAGES</code>) to modify program titles, coaches, pricing, training locations, or slot quotas.
+              All static data, such as details of the <strong>Futsal Camp</strong>, <strong>Training Packages</strong>, and <strong>Testimonials</strong> are dynamically defined using data structures in the file <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">src/data.ts</strong>. Search for those array variables (e.g., <code class="font-mono text-xs text-brand-blue bg-blue-50 px-1 py-0.5 rounded">CAMPS_DATA</code>, <code class="font-mono text-xs text-brand-blue bg-blue-50 px-1 py-0.5 rounded">TRAININGS_DATA</code>, and <code class="font-mono text-xs text-brand-blue bg-blue-50 px-1 py-0.5 rounded">TESTIMONIALS_DATA</code>) to modify program titles, coaches, pricing, training locations, slot quotas, or student testimonials.
             </p>
           </div>
 
@@ -351,6 +352,31 @@
             <p class="text-sm text-slate-600 mt-1">
               To edit input fields, change the maximum age of student registration, or configure scheduling limits, edit the form file at <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">src/components/modals/BookingModal.tsx</strong>. Use React State logic to add or remove validation rules or fields.
             </p>
+          </div>
+
+          <div class="border-l-4 border-brand-blue pl-4 py-1">
+            <h4 class="font-bold text-slate-900 text-base">Customize Branding Colors & Fonts (Tailwind CSS v4)</h4>
+            <p class="text-sm text-slate-600 mt-1">
+              This project is built using <strong>Tailwind CSS v4.0</strong>, which deprecates the old <code>tailwind.config.js</code> file. All branding variables are configured directly inside the CSS stylesheet at <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">src/index.css</strong> under the <code>@theme</code> directive. You can modify custom variables like <code>--color-brand-blue</code>, <code>--color-brand-orange</code>, or <code>--font-display</code> to instantaneously change the theme globally.
+            </p>
+          </div>
+
+          <div class="border-l-4 border-brand-blue pl-4 py-1">
+            <h4 class="font-bold text-slate-900 text-base">Modify Logo & Identity</h4>
+            <p class="text-sm text-slate-600 mt-1">
+              The website's brand identity, custom vector crest, and typography are bundled inside the React component at <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">src/components/Logo.tsx</strong>. To update the logo, you can swap the SVG crest markup inside this file, or replace it entirely with a standard <code>&lt;img src="..." /&gt;</code> asset pointing to your logo image file.
+            </p>
+          </div>
+
+          <div class="border-l-4 border-brand-blue pl-4 py-1">
+            <h4 class="font-bold text-slate-900 text-base">Connect Forms to a Backend or Email API (For Marketplace Buyers)</h4>
+            <p class="text-sm text-slate-600 mt-1">
+              By default, all booking submissions are stored locally on the client's web browser using <code>localStorage</code>, and the Contact form displays a success toast. For a live production website, you can easily connect these forms to dynamic backend API services or email microservices:
+            </p>
+            <ul class="list-disc pl-5 mt-2 text-xs text-slate-600 space-y-1.5">
+              <li><strong>Contact Form:</strong> Open <strong class="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded">src/components/sections/ContactSection.tsx</strong>, look for the <code>handleSubmit</code> function, and integrate serverless form handlers like <a href="https://formspree.io/" target="_blank" class="text-brand-blue hover:underline font-semibold">Formspree</a>, <a href="https://web3forms.com/" target="_blank" class="text-brand-blue hover:underline font-semibold">Web3Forms</a>, or <a href="https://www.emailjs.com/" target="_blank" class="text-brand-blue hover:underline font-semibold">EmailJS</a>.</li>
+              <li><strong>Booking Form:</strong> Open <strong class="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded">src/components/modals/BookingModal.tsx</strong>, locate the <code>handleSubmit</code> function, and replace the <code>localStorage</code> push operation with a standard <code>fetch()</code> or <code>axios.post()</code> request sending the payload to your Node/Express/PHP server or Database webhook.</li>
+            </ul>
           </div>
         </div>
       </section>
