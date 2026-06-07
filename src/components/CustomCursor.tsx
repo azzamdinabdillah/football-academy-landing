@@ -48,23 +48,7 @@ export default function CustomCursor() {
     <>
       {/* Outer elegant tracking circle */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-brand-orange/30 pointer-events-none z-50"
-        style={{
-          x: smoothX,
-          y: smoothY,
-          translateX: '-50%',
-          translateY: '-50%',
-        }}
-        animate={{
-          scale: isHovered ? 1.6 : 1,
-          borderColor: isHovered ? 'var(--color-brand-blue)' : 'rgba(251, 146, 60, 0.4)',
-          backgroundColor: isHovered ? 'rgba(0,112,192,0.08)' : 'rgba(0,0,0,0)'
-        }}
-        transition={{ type: 'spring', stiffness: 350, damping: 20 }}
-      />
-      {/* Center core dot */}
-      <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-brand-orange rounded-full pointer-events-none z-50 mix-blend-difference"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-brand-orange/50 pointer-events-none z-50"
         style={{
           x: smoothX,
           y: smoothY,
@@ -73,6 +57,23 @@ export default function CustomCursor() {
         }}
         animate={{
           scale: isHovered ? 1.5 : 1,
+          borderColor: isHovered ? 'var(--color-brand-blue)' : 'rgba(255, 102, 0, 0.5)',
+          backgroundColor: isHovered ? 'rgba(0, 112, 192, 0.08)' : 'rgba(0,0,0,0)'
+        }}
+        transition={{ type: 'spring', stiffness: 350, damping: 20 }}
+      />
+      {/* Center core dot */}
+      <motion.div
+        className="fixed top-0 left-0 w-2.5 h-2.5 bg-brand-orange rounded-full pointer-events-none z-50"
+        style={{
+          x: smoothX,
+          y: smoothY,
+          translateX: '-50%',
+          translateY: '-50%',
+        }}
+        animate={{
+          scale: isHovered ? 1.3 : 1,
+          backgroundColor: isHovered ? 'var(--color-brand-blue)' : 'var(--color-brand-orange)',
         }}
         transition={{ type: 'spring', stiffness: 450, damping: 25 }}
       />
