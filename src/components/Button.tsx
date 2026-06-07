@@ -46,16 +46,16 @@ export default function Button({
     'orange': 'bg-brand-orange text-white shadow-md hover:-translate-y-0.5 hover:bg-brand-orange-hover hover:shadow-lg hover:shadow-brand-orange/25',
     'indigo': 'bg-indigo-600 text-white shadow-md hover:-translate-y-0.5 hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-600/25',
     'dark': 'bg-brand-dark text-white border border-neutral-800 hover:-translate-y-0.5 hover:bg-brand-blue hover:border-brand-blue/30 hover:shadow-lg hover:shadow-brand-blue/20',
-    'outline-blue': 'bg-white border-2 border-brand-blue text-brand-blue shadow-sm hover:-translate-y-0.5 hover:bg-brand-blue hover:text-white hover:shadow-md hover:shadow-brand-blue/15',
-    'outline-orange': 'bg-white border-2 border-brand-orange text-brand-orange shadow-sm hover:-translate-y-0.5 hover:bg-brand-orange hover:text-white hover:shadow-md hover:shadow-brand-orange/15',
-    'ghost': 'bg-transparent text-slate-700 border border-transparent hover:-translate-y-0.5 hover:bg-slate-100 hover:text-brand-blue'
+    'outline-blue': 'bg-white border-2 border-brand-blue text-brand-blue hover:-translate-y-0.5 hover:bg-brand-blue hover:text-white hover:shadow-md hover:shadow-brand-blue/15',
+    'outline-orange': 'bg-white border-2 border-brand-orange text-brand-orange hover:-translate-y-0.5 hover:bg-brand-orange hover:text-white hover:shadow-md hover:shadow-brand-orange/15',
+    'ghost': 'bg-transparent text-slate-700 ring ring-inset ring-black/20 hover:-translate-y-0.5 hover:bg-slate-100 hover:text-brand-blue'
   };
 
   // Size classes map
   const sizeClasses: Record<ButtonSize, string> = {
     'sm': 'px-4 py-2 text-[11px] font-black rounded-full shadow-[0_4px_16px_rgba(0,112,192,0.12)] border border-brand-blue/15 hover:border-brand-blue',
-    'md': 'px-5 py-2.5 text-[11px] tracking-wide rounded-xl shadow-sm',
-    'lg': 'px-8 py-3 text-xs font-black rounded-full shadow-sm',
+    'md': 'px-5 py-2.5 text-[11px] tracking-wide rounded-xl',
+    'lg': 'px-8 py-3 text-xs font-black rounded-full',
     'xl': 'px-15 py-4.5 text-sm font-black rounded-2xl md:px-10', // responsive px as in hero section
     'full-edge': 'w-full py-4 text-xs font-extrabold tracking-widest rounded-b-[23px] active:scale-98 shadow-inner'
   };

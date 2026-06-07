@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { X, Calendar, User, Phone, Mail, Award, Trash2, ShieldAlert, Heart, RefreshCw } from 'lucide-react';
 import { Booking } from '../../types';
 import Button from '../Button';
+import ConfirmModal from './ConfirmModal';
 
 interface MyBookingsDrawerProps {
   isOpen: boolean;
@@ -17,6 +18,10 @@ export default function MyBookingsDrawer({
   bookings,
   onCancelBooking
 }: MyBookingsDrawerProps) {
+  const [cancelBookingId, setCancelBookingId] = React.useState<string | null>(null);
+
+  const bookingToCancel = bookings.find((b) => b.id === cancelBookingId);
+
   // Lock body scroll when drawer is open
   React.useEffect(() => {
     if (isOpen) {
@@ -130,9 +135,7 @@ export default function MyBookingsDrawer({
                             </div>
                             <Button
                               onClick={() => {
-                                if (confirm(`Are you sure you want to cancel the registration for ${booking.playerName}?`)) {
-                                  onCancelBooking(booking.id);
-                                }
+                                setCancelBookingId(booking.id);
                               }}
                               variant="ghost"
                               size="sm"
@@ -165,6 +168,30 @@ export default function MyBookingsDrawer({
               </div>
             </motion.div>
           </div>
+
+          {/* Confirm Cancel Modal */}
+          <ConfirmModal
+            isOpen={cancelBookingId !== null}
+            onClose={() => setCancelBookingId(null)}
+            onConfirm={() => {
+              if (cancelBookingId) {
+                onCancelBooking(cancelBookingId);
+                setCancelBookingId(null);
+              }
+            }}
+            tagline="Cancel Registration"
+            title="Cancel Registration"
+            message={
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Are you sure you want to cancel the registration for{' '}
+                <strong className="text-slate-900 font-extrabold">{bookingToCancel?.playerName}</strong>?
+                This action cannot be undone and your slot will be made available to other participants immediately.
+              </p>
+            }
+            confirmText="Yes, Cancel"
+            cancelText="Keep Reservation"
+            isDanger={true}
+          />
         </div>
       )}
     </AnimatePresence>
