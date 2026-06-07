@@ -41,16 +41,6 @@ export default function Navbar({ bookingsCount, onOpenBookings, onOpenBookingMod
 
   const isNavbarVisible = visible || mobileMenuOpen;
 
-  // Smooth scroll handler helper
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
-    setMobileMenuOpen(false);
-    const element = document.getElementById(targetId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
   const navLinks = [
     { title: 'About', target: 'about-section' },
     { title: 'Camps', target: 'camps' },
@@ -74,7 +64,6 @@ export default function Navbar({ bookingsCount, onOpenBookings, onOpenBookingMod
             <a
               key={link.title}
               href={`#${link.target}`}
-              onClick={(e) => handleScroll(e, link.target)}
               className="font-medium text-[13px] text-slate-700 hover:text-brand-blue duration-150 transition-colors uppercase tracking-wider relative group"
             >
               {link.title}
@@ -143,7 +132,7 @@ export default function Navbar({ bookingsCount, onOpenBookings, onOpenBookingMod
               <a
                 key={link.title}
                 href={`#${link.target}`}
-                onClick={(e) => handleScroll(e, link.target)}
+                onClick={() => setMobileMenuOpen(false)}
                 className="font-bold text-sm text-slate-700 hover:text-brand-blue uppercase tracking-wider block py-1"
               >
                 {link.title}
