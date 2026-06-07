@@ -64,7 +64,7 @@ export default function Navbar({ bookingsCount, onOpenBookings, onOpenBookingMod
       <div className="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
         
         {/* Crest Logo left side */}
-        <a href="#hero-top" onClick={(e) => handleScroll(e, 'hero-top')} className="cursor-pointer">
+        <a href="./" className="cursor-pointer">
           <Logo />
         </a>
 

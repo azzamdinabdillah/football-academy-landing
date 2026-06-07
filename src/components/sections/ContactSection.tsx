@@ -3,6 +3,8 @@ import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Send, CheckCircle, Facebook, Linkedin, Instagram } from 'lucide-react';
 import Button from '../Button';
 import ModalBase from '../modals/ModalBase';
+import Input from '../form/Input';
+import Textarea from '../form/Textarea';
 
 export default function ContactSection() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -148,60 +150,40 @@ export default function ContactSection() {
           </motion.div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-[10px] font-black text-slate-500 uppercase tracking-wider mb-1.5">
-                Full Name
-              </label>
-              <input
-                type="text"
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="e.g. Azzam Din"
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue bg-slate-50/50 hover:bg-slate-50 text-slate-800 transition-all font-medium"
-              />
-            </div>
+            <Input
+              label="Full Name"
+              type="text"
+              required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="e.g. Azzam Din"
+            />
 
-            <div>
-              <label className="block text-[10px] font-black text-slate-500 uppercase tracking-wider mb-1.5">
-                Email Address
-              </label>
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="azzam@example.com"
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue bg-slate-50/50 hover:bg-slate-50 text-slate-800 transition-all font-medium"
-              />
-            </div>
+            <Input
+              label="Email Address"
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="azzam@example.com"
+            />
 
-            <div>
-              <label className="block text-[10px] font-black text-slate-500 uppercase tracking-wider mb-1.5">
-                Phone Number (Optional)
-              </label>
-              <input
-                type="tel"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="e.g. +1 (415) 349-2098"
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue bg-slate-50/50 hover:bg-slate-50 text-slate-800 transition-all font-medium"
-              />
-            </div>
+            <Input
+              label="Phone Number (Optional)"
+              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="e.g. +1 (415) 349-2098"
+            />
 
-            <div>
-              <label className="block text-[10px] font-black text-slate-500 uppercase tracking-wider mb-1.5">
-                Message / Inquiry
-              </label>
-              <textarea
-                rows={3}
-                required
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="Describe your enquiry..."
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue bg-slate-50/50 hover:bg-slate-50 text-slate-800 transition-all font-medium"
-              />
-            </div>
+            <Textarea
+              label="Message / Inquiry"
+              rows={3}
+              required
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Describe your enquiry..."
+            />
 
             <Button
               type="submit"
