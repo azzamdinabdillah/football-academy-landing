@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { Sparkles, Award, Star } from 'lucide-react';
 import Button from '../Button';
+import footballVideo from '../../../assets/football.mp4';
 
 interface HeroProps {
   onOpenBookingModal: () => void;
@@ -49,9 +50,7 @@ export default function Hero({ onOpenBookingModal, backgroundPath }: HeroProps) 
             poster={backgroundPath}
             className="w-full h-full object-cover object-center z-0"
           >
-            {/* Extremely reliable Vimeo direct MP4 soccer video CDN URL */}
-            <source src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c054273b1e22784e1b023e3b3a6e3c1d&profile_id=165&oauth2_token_id=57447761" type="video/mp4" />
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-boys-playing-soccer-at-the-stadium-34407-large.mp4" type="video/mp4" />
+            <source src={footballVideo} type="video/mp4" />
           </video>
           {/* Subtle vignette/shading wash - darker wash to make white display typography highly readable */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f18] via-black/50 to-black/40" />
