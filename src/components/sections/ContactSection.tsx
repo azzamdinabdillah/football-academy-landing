@@ -1,33 +1,66 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, Send, CheckCircle, Facebook, Linkedin, Instagram } from 'lucide-react';
+import { Send, CheckCircle, Facebook, Linkedin, Instagram } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import Button from '../Button';
 import ModalBase from '../modals/ModalBase';
 import Input from '../form/Input';
 import Textarea from '../form/Textarea';
 
+// ─── Zod Schema ────────────────────────────────────────────────────────────────
+const contactSchema = z.object({
+  name: z
+    .string()
+    .min(2, 'Name must be at least 2 characters')
+    .max(80, 'Name is too long'),
+  email: z
+    .string()
+    .min(1, 'Email is required')
+    .email('Please enter a valid email address'),
+  phone: z
+    .string()
+    .regex(/^[+\d\s\-()]*$/, 'Please enter a valid phone number')
+    .optional()
+    .or(z.literal('')),
+  message: z
+    .string()
+    .min(10, 'Message must be at least 10 characters')
+    .max(1000, 'Message is too long'),
+});
+
+type ContactFormValues = z.infer<typeof contactSchema>;
+
+// ──────────────────────────────────────────────────────────────────────────────
+
 export default function ContactSection() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (name.trim() && email.trim() && message.trim()) {
-      setSubmitted(true);
-      setTimeout(() => {
-        // Reset states
-        setName('');
-        setEmail('');
-        setPhone('');
-        setMessage('');
-        setSubmitted(false);
-        setIsContactModalOpen(false);
-      }, 2500);
-    }
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: { name: '', email: '', phone: '', message: '' },
+  });
+
+  const onSubmit = (_data: ContactFormValues) => {
+    setSubmitted(true);
+    setTimeout(() => {
+      setSubmitted(false);
+      setIsContactModalOpen(false);
+      reset();
+    }, 2500);
+  };
+
+  const handleClose = () => {
+    setIsContactModalOpen(false);
+    setSubmitted(false);
+    reset();
   };
 
   return (
@@ -125,13 +158,12 @@ export default function ContactSection() {
       {/* CONTACT FORM MODAL POPUP */}
       <ModalBase
         isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
+        onClose={handleClose}
         maxWidth="max-w-md"
         tagline="GET ACCREDITED HELP"
         title="Premium Contact Form"
         description="Drop us a line and our athletics director will reach you within 24 business hours."
       >
-
         {submitted ? (
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -149,50 +181,52 @@ export default function ContactSection() {
             </div>
           </motion.div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
             <Input
+              id="contact-name"
               label="Full Name"
               type="text"
-              required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
               placeholder="e.g. Azzam Din"
+              error={errors.name?.message}
+              {...register('name')}
             />
 
             <Input
+              id="contact-email"
               label="Email Address"
               type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               placeholder="azzam@example.com"
+              error={errors.email?.message}
+              {...register('email')}
             />
 
             <Input
+              id="contact-phone"
               label="Phone Number (Optional)"
               type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
               placeholder="e.g. +1 (415) 349-2098"
+              error={errors.phone?.message}
+              {...register('phone')}
             />
 
             <Textarea
+              id="contact-message"
               label="Message / Inquiry"
               rows={3}
-              required
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
               placeholder="Describe your enquiry..."
+              error={errors.message?.message}
+              {...register('message')}
             />
 
             <Button
               type="submit"
               variant="blue"
               size="md"
+              disabled={isSubmitting}
               className="w-full mt-2 flex items-center justify-center gap-2"
               rightIcon={<Send className="w-3.5 h-3.5" />}
             >
-              Send Message
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </Button>
           </form>
         )}

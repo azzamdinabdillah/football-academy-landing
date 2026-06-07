@@ -13,6 +13,7 @@ interface InputProps {
   min?: string | number;
   max?: string | number;
   disabled?: boolean;
+  error?: string;
   [key: string]: any;
 }
 
@@ -29,6 +30,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
   min,
   max,
   disabled,
+  error,
   ...rest
 }, ref) => {
   return (
@@ -52,7 +54,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
           disabled={disabled}
           required={required}
           {...rest}
-          className={`w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 placeholder-slate-400 bg-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue ${
+          className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm text-slate-800 placeholder-slate-400 bg-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue ${
+            error ? 'border-red-400 focus:ring-red-200' : 'border-slate-200'
+          } ${
             icon ? 'pl-9' : ''
           } ${className}`}
         />
@@ -62,6 +66,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
           </div>
         )}
       </div>
+      {error && (
+        <p className="mt-1 text-[10px] text-red-500 font-medium">{error}</p>
+      )}
     </div>
   );
 });
