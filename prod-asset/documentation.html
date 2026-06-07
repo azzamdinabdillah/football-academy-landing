@@ -56,11 +56,7 @@
   <aside class="w-80 h-screen sticky top-0 bg-slate-900 text-slate-300 flex flex-col justify-between hidden lg:flex border-r border-slate-800 z-30">
     <div class="p-6">
       <div class="flex items-center gap-3 mb-8">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-blue to-brand-orange p-[2px]">
-          <div class="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center font-display font-bold text-white text-lg">
-            SF
-          </div>
-        </div>
+        <img src="../assets/logo.png" alt="SF Youth Futsal Logo" class="w-10 h-10 rounded-xl object-contain" />
         <div>
           <h1 class="font-display font-bold text-white leading-none">SF Youth Futsal</h1>
           <p class="text-[10px] text-slate-400 mt-1 uppercase tracking-widest font-semibold">Docs & Dev Guideline</p>
@@ -197,7 +193,7 @@
             <h4 class="font-display font-bold text-slate-900 text-lg flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-brand-orange inline-block"></span> Hero Section
             </h4>
-            <p class="text-slate-600 text-sm leading-relaxed">The opening section with immersive visuals featuring high-quality backgrounds, a grand title using the sports-themed font <strong>Space Grotesk</strong>, and excellence badges (Awards, Star Ratings) to build the best professional impression for potential clients.</p>
+            <p class="text-slate-600 text-sm leading-relaxed">Full-screen opening section with an <strong>autoplaying local video background</strong> (<code class="font-mono text-xs text-brand-blue bg-blue-50 px-1 py-0.5 rounded">assets/football.mp4</code>) enhanced with a <strong>Framer Motion</strong> entrance animation. Overlaid with a grand title using the sports-themed font <strong>Space Grotesk</strong>, a live admissions badge, and a prominent BOOK NOW call-to-action. The video uses a static image poster fallback and handles browser autoplay restrictions gracefully.</p>
           </div>
 
           <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-2">
@@ -232,21 +228,28 @@
             <h4 class="font-display font-bold text-slate-900 text-lg flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-brand-orange inline-block"></span> Contact Us Section
             </h4>
-            <p class="text-slate-600 text-sm leading-relaxed">A structured feedback form for users, along with details of the training location address, coordinates, official academy social media, and daily operational hours.</p>
+            <p class="text-slate-600 text-sm leading-relaxed">A parallax-background contact section with a right-aligned white card showing the academy's email, phone, address, and social media links. Tapping "Contact Us" opens an inline <strong>ModalBase</strong>-powered popup form (name, email, phone, message) with a success animation on submit.</p>
           </div>
 
           <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-2">
             <h4 class="font-display font-bold text-slate-900 text-lg flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-slate-900 inline-block"></span> BookingModal (Modals)
             </h4>
-            <p class="text-slate-600 text-sm leading-relaxed">An interactive multi-step pop-up with smooth transitions from the <strong>Framer Motion</strong> library that guides users through entering registration details, choosing training slot/camp categories, select dates, student names, and additional notes.</p>
+            <p class="text-slate-600 text-sm leading-relaxed">An interactive multi-step pop-up built on top of <strong>ModalBase</strong> with smooth <strong>Framer Motion</strong> transitions that guide users through choosing a camp/training category, selecting dates, entering student names, and additional notes. Uses <strong>React Hook Form</strong> + <strong>Zod</strong> for type-safe validation.</p>
           </div>
 
           <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-2">
             <h4 class="font-display font-bold text-slate-900 text-lg flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-slate-900 inline-block"></span> MyBookingsDrawer (Drawers)
             </h4>
-            <p class="text-slate-600 text-sm leading-relaxed">A smooth side drawer sliding from the right to monitor, review, set confirmation status, or cancel active registrations stored in the user device's <code>localStorage</code>.</p>
+            <p class="text-slate-600 text-sm leading-relaxed">A smooth side drawer sliding from the right to monitor, review, or cancel active registrations stored in the user device's <code>localStorage</code>. All destructive actions (cancellations) are confirmed through the custom <strong>ConfirmModal</strong> component instead of native browser <code>confirm()</code> dialogs, ensuring a consistent on-brand UX.</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-2">
+            <h4 class="font-display font-bold text-slate-900 text-lg flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-slate-900 inline-block"></span> ModalBase &amp; ConfirmModal (Shared Modal System)
+            </h4>
+            <p class="text-slate-600 text-sm leading-relaxed"><strong>ModalBase</strong> is a reusable modal shell providing a consistent layout — animated backdrop, scroll-lock, close button, and optional tagline/title/description header. Both the Contact form popup and the BookingModal use it as their base. <strong>ConfirmModal</strong> is a lightweight dialog built on ModalBase designed specifically to replace all native <code>confirm()</code> calls with a styled, accessible alternative.</p>
           </div>
         </div>
       </section>
@@ -293,6 +296,9 @@
         <!-- Code Block Simulation with Folder Structures -->
         <div class="bg-slate-900 text-slate-300 rounded-2xl p-5 font-mono text-xs space-y-2 border border-slate-800 custom-scrollbar overflow-x-auto">
           <div>sf-youth-futsal/</div>
+          <div class="pl-4 text-slate-500">├── assets/ <span class="text-slate-600">// Static media assets served at build time via Vite</span></div>
+          <div class="pl-8 text-purple-400">├── football.mp4 <span class="text-slate-600">// Hero section background video (local file, autoplay loop)</span></div>
+          <div class="pl-8 text-emerald-400">└── logo.png <span class="text-slate-600">// Academy brand logo used in Navbar & favicon</span></div>
           <div class="pl-4 text-slate-500">├── prod-asset/ <span class="text-slate-600">// Directory storing marketing images, covers & this guide</span></div>
           <div class="pl-8 text-emerald-400">├── cover.png <span class="text-slate-600">// Marketing cover mockup design with 8:5 ratio</span></div>
           <div class="pl-8 text-emerald-400">├── documentation.html <span class="text-slate-600">// The documentation file you are reading right now</span></div>
@@ -303,25 +309,34 @@
           <div class="pl-8">├── main.tsx <span class="text-slate-500">// React virtual DOM render entrypoint to HTML</span></div>
           <div class="pl-8 text-blue-400">├── index.css <span class="text-slate-500">// Global styles setting, font variables & Tailwind CSS utilities load</span></div>
           <div class="pl-8 text-yellow-500">├── types.ts <span class="text-slate-500">// Master definitions for structures, interfaces, and data types</span></div>
-          <div class="pl-8">├── components/</div>
+          <div class="pl-8">└── components/</div>
           <div class="pl-12 text-teal-400">├── Button.tsx <span class="text-slate-500">// Standardized button component with various color variants</span></div>
-          <div class="pl-12 text-teal-400">├── CustomCursor.tsx <span class="text-slate-500">// Responsive custom cursor effect for a futsal theme</span></div>
-          <div class="pl-12 text-teal-400">├── Navbar.tsx <span class="text-slate-500">// Top navigation menu and booking status notifications</span></div>
+          <div class="pl-12 text-teal-400">├── CustomCursor.tsx <span class="text-slate-500">// High-visibility custom cursor with spring-physics tracking & hover scaling</span></div>
+          <div class="pl-12 text-teal-400">├── Footer.tsx <span class="text-slate-500">// Site-wide footer — brand identity, quick links, copyright bar</span></div>
+          <div class="pl-12 text-teal-400">├── Logo.tsx <span class="text-slate-500">// Academy brand logo component (SVG crest or image asset)</span></div>
+          <div class="pl-12 text-teal-400">├── Navbar.tsx <span class="text-slate-500">// Auto-hide top navigation with scroll direction detection & mobile drawer</span></div>
           <div class="pl-12 text-teal-400">├── SectionHeader.tsx <span class="text-slate-500">// Header wrapper for each page section</span></div>
           <div class="pl-12">├── cards/ <span class="text-slate-600">// Directory grouping informational card components</span></div>
           <div class="pl-16">├── CampCard.tsx <span class="text-slate-500">// Camp promo and registration card</span></div>
           <div class="pl-16">├── PricingCard.tsx <span class="text-slate-500">// Pricing plans & elite package details card</span></div>
           <div class="pl-16">└── TestimonialCard.tsx <span class="text-slate-500">// Parent testimonial/review card</span></div>
+          <div class="pl-12">├── form/ <span class="text-slate-600">// Reusable form input primitives wired with React.forwardRef</span></div>
+          <div class="pl-16">├── DateInput.tsx <span class="text-slate-500">// Date picker input field</span></div>
+          <div class="pl-16">├── Input.tsx <span class="text-slate-500">// Labelled text/email/tel input field</span></div>
+          <div class="pl-16">├── Select.tsx <span class="text-slate-500">// Styled dropdown select field</span></div>
+          <div class="pl-16">└── Textarea.tsx <span class="text-slate-500">// Multi-line text area input field</span></div>
           <div class="pl-12">├── modals/ <span class="text-slate-600">// Directory for dialog boxes, pop-up modals, and floating drawers</span></div>
           <div class="pl-16">├── BookingModal.tsx <span class="text-slate-500">// Multi-step registration form modal</span></div>
-          <div class="pl-16">└── MyBookingsDrawer.tsx <span class="text-slate-500">// Booking list drawer for status monitoring</span></div>
-          <div class="pl-12">├── sections/ <span class="text-slate-600">// Directory layout blocks dividing sections of the page</span></div>
-          <div class="pl-16">├── Hero.tsx <span class="text-slate-500">// Hero section banner, academy badges & accolades</span></div>
+          <div class="pl-16">├── ConfirmModal.tsx <span class="text-slate-500">// Generic confirm/cancel dialog — replaces native browser confirm()</span></div>
+          <div class="pl-16">├── ModalBase.tsx <span class="text-slate-500">// Reusable base modal shell with backdrop, scroll-lock, header & animation</span></div>
+          <div class="pl-16">└── MyBookingsDrawer.tsx <span class="text-slate-500">// Booking list drawer for status monitoring & cancellation</span></div>
+          <div class="pl-12">└── sections/ <span class="text-slate-600">// Directory layout blocks dividing sections of the page</span></div>
+          <div class="pl-16">├── Hero.tsx <span class="text-slate-500">// Full-screen hero with local video background, autoplay & motion entrance</span></div>
           <div class="pl-16">├── AboutSection.tsx <span class="text-slate-500">// Academy history & educational benefits description</span></div>
           <div class="pl-16">├── CampsSection.tsx <span class="text-slate-500">// Summer Training camp listing & registration area</span></div>
           <div class="pl-16">├── TrainingsSection.tsx <span class="text-slate-500">// Regular training subscriptions list & options</span></div>
           <div class="pl-16">├── TestimonialsSection.tsx <span class="text-slate-500">// Bento layout/grid of parents & students feedback</span></div>
-          <div class="pl-16">└── ContactSection.tsx <span class="text-slate-500">// Physical location map info, opening hours, social links</span></div>
+          <div class="pl-16">└── ContactSection.tsx <span class="text-slate-500">// Contact card with ModalBase-powered contact form popup</span></div>
           <div class="pl-4">├── index.html <span class="text-slate-500">// React root HTML target, document metadata, and title</span></div>
           <div class="pl-4">├── package.json <span class="text-slate-500">// Node metadata, script execution commands, package lists</span></div>
           <div class="pl-4">└── vite.config.ts <span class="text-slate-500">// Vite bundler configurations, plugins, and HMR server settings</span></div>
@@ -368,7 +383,28 @@
           <div class="border-l-4 border-brand-blue pl-4 py-1">
             <h4 class="font-bold text-slate-900 text-base">Modify Logo & Identity</h4>
             <p class="text-sm text-slate-600 mt-1">
-              The website's brand identity, custom vector crest, and typography are bundled inside the React component at <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">src/components/Logo.tsx</strong>. To update the logo, you can swap the SVG crest markup inside this file, or replace it entirely with a standard <code>&lt;img src="..." /&gt;</code> asset pointing to your logo image file.
+              The brand logo image is stored as <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">assets/logo.png</strong> and is referenced by the <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">src/components/Logo.tsx</strong> component (used in the Navbar) and directly via a relative path in the sidebar of this documentation file. To swap the logo, replace <code class="font-mono text-xs text-brand-blue bg-blue-50 px-1 py-0.5 rounded">assets/logo.png</code> with your own image file (keep the same filename, or update the import path in both places).
+            </p>
+          </div>
+
+          <div class="border-l-4 border-brand-blue pl-4 py-1">
+            <h4 class="font-bold text-slate-900 text-base">Replace Hero Background Video</h4>
+            <p class="text-sm text-slate-600 mt-1">
+              The hero section uses a local video for its immersive fullscreen background. The video file is located at <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">assets/football.mp4</strong> and imported at the top of <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">src/components/sections/Hero.tsx</strong>. To change the video, replace the <code class="font-mono text-xs text-brand-blue bg-blue-50 px-1 py-0.5 rounded">football.mp4</code> file with your own video (H.264 MP4 is recommended for broadest browser support). The component already handles autoplay resumption on tab visibility change and suppresses browser autoplay restriction errors gracefully.
+            </p>
+          </div>
+
+          <div class="border-l-4 border-brand-blue pl-4 py-1">
+            <h4 class="font-bold text-slate-900 text-base">Edit the Site Footer</h4>
+            <p class="text-sm text-slate-600 mt-1">
+              The footer is extracted into a standalone component at <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">src/components/Footer.tsx</strong>. It contains the academy's brand tagline, quick navigation links, session info, and the copyright bar. Edit this file to update footer text, add social media links, or adjust the column layout.
+            </p>
+          </div>
+
+          <div class="border-l-4 border-brand-blue pl-4 py-1">
+            <h4 class="font-bold text-slate-900 text-base">Add or Customize Confirmation Dialogs</h4>
+            <p class="text-sm text-slate-600 mt-1">
+              All destructive confirmations (e.g., cancelling a booking) use the custom <strong class="font-mono text-xs bg-slate-100 p-0.5 rounded">src/components/modals/ConfirmModal.tsx</strong> component instead of the browser's native <code class="font-mono text-xs text-brand-blue bg-blue-50 px-1 py-0.5 rounded">confirm()</code>. To trigger a new confirm dialog, import <code class="font-mono text-xs text-brand-blue bg-blue-50 px-1 py-0.5 rounded">ConfirmModal</code>, manage its <code>isOpen</code> state locally, and pass the <code>onConfirm</code> callback. Set <code>isDanger={true}</code> to render the confirm button in red for irreversible actions.
             </p>
           </div>
 
