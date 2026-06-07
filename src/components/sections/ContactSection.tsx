@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Mail, Phone, MapPin, Send, CheckCircle, X, Facebook, Linkedin, Instagram } from 'lucide-react';
+import { motion } from 'motion/react';
+import { Mail, Phone, MapPin, Send, CheckCircle, Facebook, Linkedin, Instagram } from 'lucide-react';
 import Button from '../Button';
+import ModalBase from '../modals/ModalBase';
 
 export default function ContactSection() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -120,138 +121,100 @@ export default function ContactSection() {
       </div>
 
       {/* CONTACT FORM MODAL POPUP */}
-      <AnimatePresence>
-        {isContactModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            
-            {/* Backdrop with elegant blur */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsContactModalOpen(false)}
-              className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
-            />
+      <ModalBase
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+        maxWidth="max-w-md"
+        tagline="GET ACCREDITED HELP"
+        title="Premium Contact Form"
+        description="Drop us a line and our athletics director will reach you within 24 business hours."
+      >
 
-            {/* Modal Body */}
-            <motion.div
-              initial={{ scale: 0.93, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.93, opacity: 0 }}
-              transition={{ type: "spring", duration: 0.4 }}
-              className="bg-white rounded-3xl p-6 md:p-8 w-full max-w-md border border-slate-100 shadow-2xl relative z-10"
+        {submitted ? (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="py-12 flex flex-col items-center justify-center text-center space-y-4"
+          >
+            <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center animate-bounce">
+              <CheckCircle className="w-8 h-8" />
+            </div>
+            <div>
+              <h4 className="font-extrabold text-slate-900 text-base">Transmission Succeeded!</h4>
+              <p className="text-xs text-slate-500 mt-1 max-w-xs mx-auto">
+                Your message has been safely logged. We look forward to welcome you to the pitch!
+              </p>
+            </div>
+          </motion.div>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="block text-[10px] font-black text-slate-500 uppercase tracking-wider mb-1.5">
+                Full Name
+              </label>
+              <input
+                type="text"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="e.g. Azzam Din"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue bg-slate-50/50 hover:bg-slate-50 text-slate-800 transition-all font-medium"
+              />
+            </div>
+
+            <div>
+              <label className="block text-[10px] font-black text-slate-500 uppercase tracking-wider mb-1.5">
+                Email Address
+              </label>
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="azzam@example.com"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue bg-slate-50/50 hover:bg-slate-50 text-slate-800 transition-all font-medium"
+              />
+            </div>
+
+            <div>
+              <label className="block text-[10px] font-black text-slate-500 uppercase tracking-wider mb-1.5">
+                Phone Number (Optional)
+              </label>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="e.g. +1 (415) 349-2098"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue bg-slate-50/50 hover:bg-slate-50 text-slate-800 transition-all font-medium"
+              />
+            </div>
+
+            <div>
+              <label className="block text-[10px] font-black text-slate-500 uppercase tracking-wider mb-1.5">
+                Message / Inquiry
+              </label>
+              <textarea
+                rows={3}
+                required
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Describe your enquiry..."
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue bg-slate-50/50 hover:bg-slate-50 text-slate-800 transition-all font-medium"
+              />
+            </div>
+
+            <Button
+              type="submit"
+              variant="blue"
+              size="md"
+              className="w-full mt-2 flex items-center justify-center gap-2"
+              rightIcon={<Send className="w-3.5 h-3.5" />}
             >
-              {/* Close Button */}
-              <button 
-                onClick={() => setIsContactModalOpen(false)}
-                className="absolute top-5 right-5 p-2 text-slate-400 hover:text-slate-600 bg-slate-50 hover:bg-slate-100/80 rounded-full transition-colors cursor-pointer"
-              >
-                <X className="w-4 h-4" />
-              </button>
-
-              <div className="mb-6">
-                <span className="text-[10px] text-brand-blue font-black tracking-widest uppercase block mb-1">
-                  GET ACCREDITED HELP
-                </span>
-                <h3 
-                  style={{ fontFamily: 'var(--font-display)' }} 
-                  className="text-xl md:text-2xl font-black text-slate-900 tracking-tight"
-                >
-                  Premium Contact Form
-                </h3>
-                <p className="text-slate-500 text-xs mt-1">
-                  Drop us a line and our athletics director will reach you within 24 business hours.
-                </p>
-              </div>
-
-              {submitted ? (
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="py-12 flex flex-col items-center justify-center text-center space-y-4"
-                >
-                  <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center animate-bounce">
-                    <CheckCircle className="w-8 h-8" />
-                  </div>
-                  <div>
-                    <h4 className="font-extrabold text-slate-900 text-base">Transmission Succeeded!</h4>
-                    <p className="text-xs text-slate-500 mt-1 max-w-xs mx-auto">
-                      Your message has been safely logged. We look forward to welcome you to the pitch!
-                    </p>
-                  </div>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <label className="block text-[10px] font-black text-slate-500 uppercase tracking-wider mb-1.5">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="e.g. Azzam Din"
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue bg-slate-50/50 hover:bg-slate-50 text-slate-800 transition-all font-medium"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] font-black text-slate-500 uppercase tracking-wider mb-1.5">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="azzam@example.com"
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue bg-slate-50/50 hover:bg-slate-50 text-slate-800 transition-all font-medium"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] font-black text-slate-500 uppercase tracking-wider mb-1.5">
-                      Phone Number (Optional)
-                    </label>
-                    <input
-                      type="tel"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      placeholder="e.g. +1 (415) 349-2098"
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue bg-slate-50/50 hover:bg-slate-50 text-slate-800 transition-all font-medium"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] font-black text-slate-500 uppercase tracking-wider mb-1.5">
-                      Message / Inquiry
-                    </label>
-                    <textarea
-                      rows={3}
-                      required
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Describe your enquiry..."
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue bg-slate-50/50 hover:bg-slate-50 text-slate-800 transition-all font-medium"
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    variant="blue"
-                    size="md"
-                    className="w-full mt-2 flex items-center justify-center gap-2"
-                    rightIcon={<Send className="w-3.5 h-3.5" />}
-                  >
-                    Send Message
-                  </Button>
-                </form>
-              )}
-            </motion.div>
-          </div>
+              Send Message
+            </Button>
+          </form>
         )}
-      </AnimatePresence>
+      </ModalBase>
 
     </section>
   );
