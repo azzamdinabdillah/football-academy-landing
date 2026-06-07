@@ -17,7 +17,7 @@ const bookingSchema = z.object({
   playerAge: z.number().min(5, 'Player age must be at least 5').max(20, 'Player age must be at most 20'),
   parentName: z.string().min(1, 'Parent/Guardian name is required'),
   parentEmail: z.string().min(1, 'Email address is required').email('Invalid email address'),
-  parentPhone: z.string().min(1, 'Contact phone is required'),
+  parentPhone: z.string().min(1, 'Contact phone is required').regex(/^\d+$/, 'Phone number must contain digits only'),
   bookingType: z.enum(['Camp', 'Training']),
   selectedItemId: z.string().min(1, 'Selected program is required'),
   selectedDate: z.string().min(1, 'Session / Start date is required'),
@@ -52,7 +52,7 @@ export default function BookingModal({
     watch,
     setValue,
     reset,
-    formState: { errors }
+    formState: { errors, isSubmitting }
   } = useForm<BookingFormValues>({
     resolver: zodResolver(bookingSchema),
     defaultValues: {
@@ -181,17 +181,7 @@ export default function BookingModal({
       <div>
         {step === 1 ? (
           // STEP 1: FORM FILLING
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-5">
-            {Object.keys(errors).length > 0 && (
-              <div className="flex items-start gap-2 p-3.5 bg-red-50 text-red-700 text-xs rounded-xl border border-red-200">
-                <AlertTriangle className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <div className="flex flex-col gap-0.5">
-                  {Object.entries(errors).map(([key, err]) => (
-                    <span key={key}>{err?.message}</span>
-                  ))}
-                </div>
-              </div>
-            )}
+          <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4 sm:space-y-5">
 
             {/* Booking Category Selector */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
@@ -225,8 +215,8 @@ export default function BookingModal({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
               <Select
                 label="Selected Program"
+                error={errors.selectedItemId?.message}
                 {...register('selectedItemId')}
-                required
               >
                 {bookingType === 'Camp'
                   ? camps.map(c => (
@@ -243,9 +233,9 @@ export default function BookingModal({
 
               <DateInput
                 label="Session / Start Date"
+                error={errors.selectedDate?.message}
                 {...register('selectedDate')}
                 min="2026-06-02"
-                required
               />
             </div>
 
@@ -260,9 +250,9 @@ export default function BookingModal({
                     label="Player Full Name"
                     type="text"
                     placeholder="e.g. Dani Abdillah"
-                    {...register('playerName')}
-                    required
+                    error={errors.playerName?.message}
                     icon={<User className="w-3.5 h-3.5" />}
+                    {...register('playerName')}
                   />
                 </div>
 
@@ -272,8 +262,8 @@ export default function BookingModal({
                     type="number"
                     min="5"
                     max="20"
+                    error={errors.playerAge?.message}
                     {...register('playerAge', { valueAsNumber: true })}
-                    required
                   />
                 </div>
               </div>
@@ -287,8 +277,8 @@ export default function BookingModal({
                 label="Parent/Guardian Name"
                 type="text"
                 placeholder="e.g. Azzam Abdillah"
+                error={errors.parentName?.message}
                 {...register('parentName')}
-                required
               />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -296,18 +286,23 @@ export default function BookingModal({
                   label="Email Address"
                   type="email"
                   placeholder="guardian@example.com"
-                  {...register('parentEmail')}
-                  required
+                  error={errors.parentEmail?.message}
                   icon={<Mail className="w-3.5 h-3.5" />}
+                  {...register('parentEmail')}
                 />
 
                 <Input
                   label="Contact Phone"
                   type="tel"
-                  placeholder="+1 (555) 019-2834"
-                  {...register('parentPhone')}
-                  required
+                  inputMode="numeric"
+                  placeholder="e.g. 6281234567890"
+                  error={errors.parentPhone?.message}
                   icon={<Phone className="w-3.5 h-3.5" />}
+                  onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                    const allowed = ['Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight', 'Home', 'End'];
+                    if (!allowed.includes(e.key) && !/^\d$/.test(e.key)) e.preventDefault();
+                  }}
+                  {...register('parentPhone')}
                 />
               </div>
             </div>
@@ -316,8 +311,9 @@ export default function BookingModal({
             <Textarea
               label="Special Notes / Allergies / Experience Level (Optional)"
               placeholder="Provide any medical details, team experience, or positional focus..."
-              {...register('notes')}
+              error={errors.notes?.message}
               rows={2}
+              {...register('notes')}
             />
 
             {/* Bottom Pricing Summary and Action */}
@@ -332,9 +328,10 @@ export default function BookingModal({
                 type="submit"
                 variant="blue"
                 size="md"
+                disabled={isSubmitting}
                 className="w-full sm:w-auto px-6 py-3"
               >
-                Confirm & Reserve Spot
+                {isSubmitting ? 'Processing...' : 'Confirm & Reserve Spot'}
               </Button>
             </div>
           </form>

@@ -3,8 +3,8 @@ import { Calendar } from 'lucide-react';
 
 interface DateInputProps {
   label: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   id?: string;
   className?: string;
   required?: boolean;
@@ -12,6 +12,7 @@ interface DateInputProps {
   max?: string;
   disabled?: boolean;
   icon?: React.ReactNode;
+  error?: string;
   [key: string]: any;
 }
 
@@ -26,6 +27,7 @@ const DateInput = forwardRef<HTMLInputElement, DateInputProps>(({
   max,
   disabled,
   icon = <Calendar className="w-3.5 h-3.5" />,
+  error,
   ...rest
 }, ref) => {
   return (
@@ -48,7 +50,9 @@ const DateInput = forwardRef<HTMLInputElement, DateInputProps>(({
           disabled={disabled}
           required={required}
           {...rest}
-          className={`w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 bg-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue pl-9 ${className}`}
+          className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm text-slate-800 bg-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue pl-9 ${
+            error ? 'border-red-400 focus:ring-red-200' : 'border-slate-200'
+          } ${className}`}
         />
         {icon && (
           <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 flex items-center justify-center pointer-events-none">
@@ -56,6 +60,9 @@ const DateInput = forwardRef<HTMLInputElement, DateInputProps>(({
           </div>
         )}
       </div>
+      {error && (
+        <p className="mt-1 text-[10px] text-red-500 font-medium">{error}</p>
+      )}
     </div>
   );
 });
