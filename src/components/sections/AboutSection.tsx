@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Check, Users, Award, Star } from 'lucide-react';
+import TrainingProgramCard from '../cards/TrainingProgramCard';
 import Button from '../Button';
 
 interface AboutSectionProps {
@@ -138,76 +138,17 @@ export default function AboutSection({ onOpenBooking }: AboutSectionProps) {
           {/* Stacked background action cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {points.map((pt, idx) => (
-              <motion.div
+              <TrainingProgramCard
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group select-none relative rounded-[24px] bg-white border border-slate-100 p-2 pb-5 flex flex-col justify-between shadow-[0_8px_30px_rgba(15,23,42,0.02)] hover:shadow-[0_16px_40px_rgba(15,23,42,0.05)] hover:-translate-y-0.5 transition-all duration-300"
-              >
-                {/* Top Image Part with Inner Radius spacing matching card padding */}
-                <div className="relative rounded-[16px] overflow-hidden aspect-[16/10] sm:aspect-[16/9] bg-slate-50">
-                  <img
-                    src={pt.image}
-                    alt={pt.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-103"
-                    referrerPolicy="no-referrer"
-                  />
-                  
-                  {/* Frosted/Glassmorphism badge exactly like Emma Carter card layout */}
-                  <div className="absolute top-3 left-1/2 -translate-x-1/2 bg-slate-950/40 backdrop-blur-md text-white text-[9px] font-black tracking-widest uppercase px-3 py-1 rounded-full flex items-center gap-1.5 border border-white/10 shadow-sm">
-                    <Star className="w-3 h-3 text-amber-300 fill-amber-300" />
-                    <span>{pt.badge}</span>
-                  </div>
-                </div>
-
-                {/* Overlaid content text and CTAs */}
-                <div className="pt-4.5 px-4.5 space-y-4 text-left flex-1 flex flex-col justify-between">
-                  <div>
-                    {/* Header Name with Solid verified check pill */}
-                    <h3 
-                      style={{ fontFamily: 'var(--font-display)' }} 
-                      className="text-base sm:text-lg font-black text-slate-900 tracking-tight flex items-center justify-between"
-                    >
-                      <span className="flex items-center gap-1.5">
-                        {pt.title}
-                        <div className="w-4 h-4 rounded-full bg-[#e8fbf1] border border-[#a3f3cc] flex items-center justify-center flex-shrink-0">
-                          <Check className="w-2.5 h-2.5 text-[#10b981] stroke-[3.5]" />
-                        </div>
-                      </span>
-                    </h3>
-
-                    {/* Description text */}
-                    <p className="text-slate-500 text-xs font-semibold leading-relaxed mt-2.5">
-                      {pt.description}
-                    </p>
-                  </div>
-
-                  {/* Bottom details mimicking user count indicators */}
-                  <div className="pt-3.5 flex items-center justify-between border-t border-slate-50">
-                    <div className="flex items-center gap-4 text-slate-400 font-bold text-[10px] sm:text-xs">
-                      <div className="flex items-center gap-1.5 leading-none">
-                        <Users className="w-4 h-4 text-slate-400" />
-                        <span>{pt.stat1}</span>
-                      </div>
-                      <div className="flex items-center gap-1.5 leading-none">
-                        <Award className="w-4 h-4 text-slate-400" />
-                        <span>{pt.stat2}</span>
-                      </div>
-                    </div>
-
-                    <Button 
-                      onClick={onOpenBooking}
-                      variant="outline-blue"
-                      size="sm"
-                      rightIcon={<span className="font-extrabold text-brand-blue opacity-80">+</span>}
-                    >
-                      Book Now
-                    </Button>
-                  </div>
-                </div>
-              </motion.div>
+                index={idx}
+                title={pt.title}
+                description={pt.description}
+                image={pt.image}
+                badge={pt.badge}
+                stat1={pt.stat1}
+                stat2={pt.stat2}
+                onOpenBooking={onOpenBooking}
+              />
             ))}
           </div>
 

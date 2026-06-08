@@ -44,3 +44,14 @@ export interface Testimonial {
   rating: number;
   avatar: string;
 }
+
+export interface TrainingProgramCardProps {
+  title: string;
+  description: string;
+  image: string;
+  badge: string;
+  stat1: string;
+  stat2: string;
+  index?: number;
+  onOpenBooking?: () => void;
+}
