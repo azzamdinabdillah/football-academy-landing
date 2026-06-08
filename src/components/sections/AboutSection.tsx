@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import TrainingProgramCard from '../cards/TrainingProgramCard';
+import TrainingProgramCardDesktop from '../cards/TrainingProgramCardDesktop';
 import Button from '../Button';
 
 interface AboutSectionProps {
@@ -41,7 +42,6 @@ export default function AboutSection({ onOpenBooking }: AboutSectionProps) {
         
         {/* 1. DESKTOP LAYOUT (lg:block - exactly identical to original) */}
         <div className="hidden lg:block">
-          {/* Row 1: Titles and descriptions */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-8 items-start">
             
             {/* Leftmost main heading */}
@@ -51,50 +51,18 @@ export default function AboutSection({ onOpenBooking }: AboutSectionProps) {
               </h2>
             </div>
 
-            {/* Three strength / capability descriptions */}
+            {/* Three program columns */}
             {points.map((pt, idx) => (
-              <motion.div
+              <TrainingProgramCardDesktop
                 key={idx}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className="lg:col-span-1 space-y-3"
-              >
-                <h3 className="font-display font-black text-slate-800 text-base lg:text-lg tracking-tight">
-                  {pt.title}
-                </h3>
-                <p className="text-slate-500 text-xs lg:text-sm leading-relaxed font-medium">
-                  {pt.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Row 2: Vertical high fidelity action images to copy screenshot structure */}
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-8 mt-10">
-            {/* Label vertical spacing marker */}
-            <div className="hidden lg:block lg:col-span-1" />
-
-            {/* Three corresponding action images representing youth futsal training */}
-            {points.map((pt, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.98 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.15 }}
-                className="lg:col-span-1"
-              >
-                <div className="aspect-[4/5] rounded-3xl overflow-hidden relative shadow-sm hover:shadow-lg transition-shadow duration-300 border border-slate-100 bg-slate-50">
-                  <img
-                    src={pt.image}
-                    alt={pt.title}
-                    className="w-full h-full object-cover select-none"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              </motion.div>
+                index={idx}
+                title={pt.title}
+                description={pt.description}
+                image={pt.image}
+                badge={pt.badge}
+                stat1={pt.stat1}
+                stat2={pt.stat2}
+              />
             ))}
           </div>
 
