@@ -221,7 +221,7 @@
             <h4 class="font-display font-bold text-slate-900 text-lg flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-brand-orange inline-block"></span> Parent reviews / Testimonials Section
             </h4>
-            <p class="text-slate-600 text-sm leading-relaxed">Enhanced with a carousel system or bento layout, presenting authentic feedback from parents and success stories from academy graduates.</p>
+            <p class="text-slate-600 text-sm leading-relaxed">Features a dual-column <strong>infinite scroll marquee</strong> layout (vertical on desktop, horizontal on mobile) that continuously animates testimonial cards from parents and academy graduates. The 8-item dataset is centralized in <code class="font-mono text-xs text-brand-blue bg-blue-50 px-1 py-0.5 rounded">src/data.ts</code> under <code class="font-mono text-xs text-brand-blue bg-blue-50 px-1 py-0.5 rounded">TESTIMONIALS_DATA</code>.</p>
           </div>
 
           <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-2">
@@ -314,12 +314,13 @@
           <div class="pl-12 text-teal-400">├── CustomCursor.tsx <span class="text-slate-500">// High-visibility custom cursor with spring-physics tracking & hover scaling</span></div>
           <div class="pl-12 text-teal-400">├── Footer.tsx <span class="text-slate-500">// Site-wide footer — brand identity, quick links, copyright bar</span></div>
           <div class="pl-12 text-teal-400">├── Logo.tsx <span class="text-slate-500">// Academy brand logo component (SVG crest or image asset)</span></div>
-          <div class="pl-12 text-teal-400">├── Navbar.tsx <span class="text-slate-500">// Auto-hide top navigation with scroll direction detection & mobile drawer</span></div>
+          <div class="pl-12 text-teal-400">├── Navbar.tsx <span class="text-slate-500">// Auto-hide top navigation with scroll direction detection &amp; mobile drawer</span></div>
           <div class="pl-12 text-teal-400">├── SectionHeader.tsx <span class="text-slate-500">// Header wrapper for each page section</span></div>
           <div class="pl-12">├── cards/ <span class="text-slate-600">// Directory grouping informational card components</span></div>
           <div class="pl-16">├── CampCard.tsx <span class="text-slate-500">// Camp promo and registration card</span></div>
           <div class="pl-16">├── PricingCard.tsx <span class="text-slate-500">// Pricing plans & elite package details card</span></div>
-          <div class="pl-16">└── TestimonialCard.tsx <span class="text-slate-500">// Parent testimonial/review card</span></div>
+          <div class="pl-16">├── TestimonialCard.tsx <span class="text-slate-500">// Parent testimonial/review card (mobile &amp; desktop variant)</span></div>
+          <div class="pl-16">└── TrainingProgramCard.tsx <span class="text-slate-500">// Training program card (responsive, used in ProgramsSection)</span></div>
           <div class="pl-12">├── form/ <span class="text-slate-600">// Reusable form input primitives wired with React.forwardRef</span></div>
           <div class="pl-16">├── DateInput.tsx <span class="text-slate-500">// Date picker input field</span></div>
           <div class="pl-16">├── Input.tsx <span class="text-slate-500">// Labelled text/email/tel input field</span></div>
@@ -335,7 +336,7 @@
           <div class="pl-16">├── ProgramsSection.tsx <span class="text-slate-500">// Academy training programs list & detailed description</span></div>
           <div class="pl-16">├── CampsSection.tsx <span class="text-slate-500">// Summer Training camp listing & registration area</span></div>
           <div class="pl-16">├── TrainingsSection.tsx <span class="text-slate-500">// Regular training subscriptions list & options</span></div>
-          <div class="pl-16">├── TestimonialsSection.tsx <span class="text-slate-500">// Bento layout/grid of parents & students feedback</span></div>
+          <div class="pl-16">├── TestimonialsSection.tsx <span class="text-slate-500">// Dual-column infinite scroll marquee of parents & students feedback</span></div>
           <div class="pl-16">└── ContactSection.tsx <span class="text-slate-500">// Contact card with ModalBase-powered contact form popup</span></div>
           <div class="pl-4">├── index.html <span class="text-slate-500">// React root HTML target, document metadata, and title</span></div>
           <div class="pl-4">├── package.json <span class="text-slate-500">// Node metadata, script execution commands, package lists</span></div>

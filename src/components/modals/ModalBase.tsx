@@ -11,6 +11,7 @@ interface ModalBaseProps {
   children: ReactNode;
   maxWidth?: string; // e.g. "max-w-md", "max-w-2xl"
   closeButtonId?: string;
+  hideScrollbar?: boolean;
 }
 
 export default function ModalBase({
@@ -21,7 +22,8 @@ export default function ModalBase({
   description,
   children,
   maxWidth = 'max-w-md',
-  closeButtonId
+  closeButtonId,
+  hideScrollbar = false
 }: ModalBaseProps) {
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -90,7 +92,7 @@ export default function ModalBase({
             )}
 
             {/* Scrollable Children Container */}
-            <div className="overflow-y-auto flex-1 overscroll-contain pr-1 -mr-1">
+            <div className={`overflow-y-auto flex-1 overscroll-contain pr-1 -mr-1 ${hideScrollbar ? 'scrollbar-none' : ''}`}>
               {children}
             </div>
           </motion.div>

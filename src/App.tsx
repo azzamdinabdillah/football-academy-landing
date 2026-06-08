@@ -21,7 +21,7 @@ import CustomCursor from './components/CustomCursor';
 import Footer from './components/Footer';
 
 import { Booking } from './types';
-import { CAMPS_DATA, TRAININGS_DATA, TESTIMONIALS_DATA } from './data';
+import { CAMPS_DATA, TRAININGS_DATA } from './data';
 
 export default function App() {
   // Booking state from localStorage
@@ -147,7 +147,7 @@ export default function App() {
   const heroBackgroundPath = "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1993&auto=format&fit=crop";
 
   return (
-    <div className="relative min-h-screen flex flex-col justify-between selection:bg-brand-orange/20 antialiased">
+    <div className="relative min-h-dvh flex flex-col justify-between selection:bg-brand-orange/20 antialiased">
       <CustomCursor />
       
       {/* Structural Header Navigation */}
@@ -181,7 +181,7 @@ export default function App() {
         />
 
         {/* Slide reviews / Testimonials */}
-        <TestimonialsSection testimonials={TESTIMONIALS_DATA} />
+        <TestimonialsSection />
 
         {/* Contact info & Interactive mock directions locator map */}
         <ContactSection />

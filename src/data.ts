@@ -1,4 +1,4 @@
-import { FutsalCamp, TrainingPackage, Testimonial, TrainingProgramCardProps } from './types';
+import { FutsalCamp, TrainingPackage, Testimonial, TrainingProgram } from './types';
 
 export const CAMPS_DATA: FutsalCamp[] = [
   {
@@ -85,30 +85,70 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
   {
     id: 't-1',
     name: 'Marcus Henderson',
-    role: 'Parent of U13 Competitive Club Midfielder',
-    text: 'My son has played club soccer for 4 years, but joining the SF Youth Futsal program transformed his speed of thought and confidence on the ball. The 1v1 mastery taught here is unmatched! His outdoor coaches immediately noticed his incredible first touch and split-second dribbles.',
+    role: 'Parent of U13 Competitive Club Player',
+    text: 'My son has played club soccer for 4 years, but joining SF Youth Futsal program transformed his speed of thought and confidence on the ball. The ball mastery taught here is unmatched!',
     rating: 5,
     avatar: 'https://images.unsplash.com/photo-1540569014015-19a7be504e3a?q=80&w=200&auto=format&fit=crop'
   },
   {
     id: 't-2',
     name: 'Elena Rostova',
-    role: 'Elite Girl Player, College Recruit Cohort 2025',
-    text: 'The recruiting showcase and tactical video reviews gave me the leverage to stand out to college scouts. The instructors push you to your absolute limits, but they treat you like family. If you want to play at the next level, this is where you train.',
-    rating: 5,
+    role: 'Elite Girl Player, College Recruit 2025',
+    text: 'The recruiting showcase and tactical video reviews gave me the leverage to stand out to college scouts. If you want to play at the next level, train here.',
+    rating: 4.9,
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop'
   },
   {
     id: 't-3',
-    name: 'David & Sofia Thorne',
-    role: 'Parents of U9 Elite Prep Twins',
-    text: 'Finding quality futsal coaching in San Francisco was tough till we found SF Youth Futsal. The coaches have authentic futsal experience and run high-tempo, fun but extremely disciplined sessions. Our boys wait for Mondays and Wednesdays all week long!',
+    name: 'Sofia Thorne',
+    role: 'Parent of U9 Elite Prep Twins',
+    text: 'Finding high-quality futsal coaching in San Francisco was tough till we found this program. Our kids wait for Mondays and Wednesdays all week long!',
     rating: 5,
     avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop'
+  },
+  {
+    id: 't-4',
+    name: 'Sarah Jenkins',
+    role: 'Parent of U15 Winger',
+    text: 'The attention to detailed positioning and rapid transition play helped my daughter excel in her high school varsity matches. High-intensity and super organized!',
+    rating: 4.9,
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop'
+  },
+  {
+    id: 't-5',
+    name: 'Coach Robert Vance',
+    role: 'Regional Youth Scout & Analyst',
+    text: 'Unbelievable curriculum. The focus on micro-touches and explosive agility on court translates beautifully to the grass field. Highest recommendations!',
+    rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop'
+  },
+  {
+    id: 't-6',
+    name: 'Thomas Alvarez',
+    role: 'Parent of U11 Midfielder',
+    text: 'More touches, fast decisions, and high repetition. SF Youth Futsal trains athletes to think two steps ahead. A must for any competitive youth soccer player.',
+    rating: 4.9,
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop'
+  },
+  {
+    id: 't-7',
+    name: 'Lucas Miller',
+    role: 'U16 Academy Striker',
+    text: 'As an outdoor club striker, my close-quarters finishing improved drastically after one summer camp here. The coaches are phenomenal mentors!',
+    rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop'
+  },
+  {
+    id: 't-8',
+    name: 'Amara Diallo',
+    role: 'Parent of U12 Goalkeeper',
+    text: 'The booking is seamless, and the scouting assessment gave us clear, data-driven targets to improve. Highly professional soccer school!',
+    rating: 4.9,
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop'
   }
 ];
 
-export const PROGRAMS_DATA: TrainingProgramCardProps[] = [
+export const PROGRAMS_DATA: TrainingProgram[] = [
   {
     title: "Elite Soccer Training",
     description: "Elite soccer training provides top-tier coaching, advanced techniques, & comprehensive drills to player.",

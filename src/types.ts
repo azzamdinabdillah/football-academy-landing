@@ -47,15 +47,19 @@ export interface Testimonial {
   avatar: string;
 }
 
-export interface TrainingProgramCardProps {
+export interface TrainingProgram {
   title: string;
   description: string;
   image: string;
   badge: string;
   stat1: string;
   stat2: string;
+}
+
+export interface TrainingProgramCardProps extends TrainingProgram {
   index?: number;
   onOpenBooking?: () => void;
   key?: React.Key;
 }
+
 

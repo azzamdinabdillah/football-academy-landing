@@ -170,6 +170,7 @@ export default function BookingModal({
       onClose={handleResetClose}
       maxWidth="max-w-2xl"
       closeButtonId="close-booking-modal"
+      hideScrollbar={true}
       tagline={step === 1 ? "FUTSAL ACADEMY BOOKING" : "REGISTRATION CONFIRMED"}
       title={step === 1 ? "Futsal Academy Booking System" : "Registration Successful!"}
       description={

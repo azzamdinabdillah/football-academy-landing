@@ -1,17 +1,9 @@
 import React from 'react';
 import { Star } from 'lucide-react';
-
-export interface TestimonialItem {
-  id: string;
-  name: string;
-  role: string;
-  text: string;
-  rating: string;
-  avatar: string;
-}
+import { Testimonial } from '../../types';
 
 interface TestimonialCardProps {
-  item: TestimonialItem;
+  item: Testimonial;
   variant?: 'mobile' | 'desktop';
   key?: React.Key;
 }
