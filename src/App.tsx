@@ -143,8 +143,8 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Image path of generated background (from our image generation step)
-  const heroBackgroundPath = "/src/assets/images/futsal_hero_bg_1780383073976.png";
+  // Hero background image from Unsplash (futsal / football action shot)
+  const heroBackgroundPath = "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1993&auto=format&fit=crop";
 
   return (
     <div className="relative min-h-screen flex flex-col justify-between selection:bg-brand-orange/20 antialiased">
