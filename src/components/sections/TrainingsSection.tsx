@@ -30,7 +30,7 @@ export default function TrainingsSection({ trainings, onOpenBooking }: Trainings
         />
 
         {/* Training Packages Row */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {trainings.map((pkg, idx) => (
             <PricingCard
               key={pkg.id}
