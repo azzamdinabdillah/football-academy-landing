@@ -3,25 +3,25 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect, useRef } from 'react';
-import { Sparkles, ArrowUp, Milestone } from 'lucide-react';
-import Lenis from 'lenis';
+import React, { useState, useEffect, useRef } from "react";
+import { Sparkles, ArrowUp, Milestone } from "lucide-react";
+import Lenis from "lenis";
 
-import Navbar from './components/Navbar';
-import Hero from './components/sections/Hero';
-import ProgramsSection from './components/sections/ProgramsSection';
-import CampsSection from './components/sections/CampsSection';
-import TrainingsSection from './components/sections/TrainingsSection';
-import TestimonialsSection from './components/sections/TestimonialsSection';
-import ContactSection from './components/sections/ContactSection';
+import Navbar from "./components/Navbar";
+import Hero from "./components/sections/Hero";
+import ProgramsSection from "./components/sections/ProgramsSection";
+import CampsSection from "./components/sections/CampsSection";
+import TrainingsSection from "./components/sections/TrainingsSection";
+import TestimonialsSection from "./components/sections/TestimonialsSection";
+import ContactSection from "./components/sections/ContactSection";
 
-import BookingModal from './components/modals/BookingModal';
-import MyBookingsDrawer from './components/modals/MyBookingsDrawer';
-import CustomCursor from './components/CustomCursor';
-import Footer from './components/Footer';
+import BookingModal from "./components/modals/BookingModal";
+import MyBookingsDrawer from "./components/modals/MyBookingsDrawer";
+import CustomCursor from "./components/CustomCursor";
+import Footer from "./components/Footer";
 
-import { Booking } from './types';
-import { CAMPS_DATA, TRAININGS_DATA } from './data';
+import { Booking } from "./types";
+import { CAMPS_DATA, TRAININGS_DATA } from "./data";
 
 export default function App() {
   // Booking state from localStorage
@@ -30,7 +30,9 @@ export default function App() {
   // Modal controls
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [preselectedId, setPreselectedId] = useState<string | undefined>(undefined);
+  const [preselectedId, setPreselectedId] = useState<string | undefined>(
+    undefined,
+  );
 
   const lenisRef = useRef<Lenis | null>(null);
 
@@ -39,8 +41,8 @@ export default function App() {
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
+      orientation: "vertical",
+      gestureOrientation: "vertical",
       smoothWheel: true,
     });
 
@@ -68,31 +70,31 @@ export default function App() {
       if (lenis) {
         lenis.stop();
       }
-      document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
-      document.body.classList.add('lenis-stopped');
-      document.documentElement.classList.add('lenis-stopped');
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      document.body.classList.add("lenis-stopped");
+      document.documentElement.classList.add("lenis-stopped");
     } else {
       if (lenis) {
         lenis.start();
       }
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-      document.body.classList.remove('lenis-stopped');
-      document.documentElement.classList.remove('lenis-stopped');
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      document.body.classList.remove("lenis-stopped");
+      document.documentElement.classList.remove("lenis-stopped");
     }
 
     return () => {
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-      document.body.classList.remove('lenis-stopped');
-      document.documentElement.classList.remove('lenis-stopped');
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      document.body.classList.remove("lenis-stopped");
+      document.documentElement.classList.remove("lenis-stopped");
     };
   }, [isBookingOpen, isDrawerOpen]);
 
   // Load bookings on mount
   useEffect(() => {
-    const raw = localStorage.getItem('sfyf_bookings');
+    const raw = localStorage.getItem("sfyf_bookings");
     if (raw) {
       try {
         setBookings(JSON.parse(raw));
@@ -104,7 +106,7 @@ export default function App() {
 
   const handleBookingSuccess = () => {
     // Reload bookings list
-    const raw = localStorage.getItem('sfyf_bookings');
+    const raw = localStorage.getItem("sfyf_bookings");
     if (raw) {
       try {
         setBookings(JSON.parse(raw));
@@ -117,7 +119,7 @@ export default function App() {
   const handleCancelBooking = (bookingId: string) => {
     const updated = bookings.filter((b) => b.id !== bookingId);
     setBookings(updated);
-    localStorage.setItem('sfyf_bookings', JSON.stringify(updated));
+    localStorage.setItem("sfyf_bookings", JSON.stringify(updated));
   };
 
   const handleOpenBookingWithSelect = (id?: string) => {
@@ -135,21 +137,22 @@ export default function App() {
         setShowScrollTop(false);
       }
     };
-    window.addEventListener('scroll', checkScroll);
-    return () => window.removeEventListener('scroll', checkScroll);
+    window.addEventListener("scroll", checkScroll);
+    return () => window.removeEventListener("scroll", checkScroll);
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   // Hero background image from Unsplash (futsal / football action shot)
-  const heroBackgroundPath = "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1993&auto=format&fit=crop";
+  const heroBackgroundPath =
+    "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1993&auto=format&fit=crop";
 
   return (
-    <div className="relative min-h-dvh flex flex-col justify-between selection:bg-brand-orange/20 antialiased">
+    <div className="relative min-h-svh flex flex-col justify-between selection:bg-brand-orange/20 antialiased">
       <CustomCursor />
-      
+
       {/* Structural Header Navigation */}
       <Navbar
         bookingsCount={bookings.length}
@@ -166,7 +169,9 @@ export default function App() {
         />
 
         {/* Value details / Programs section */}
-        <ProgramsSection onOpenBooking={() => handleOpenBookingWithSelect(undefined)} />
+        <ProgramsSection
+          onOpenBooking={() => handleOpenBookingWithSelect(undefined)}
+        />
 
         {/* Futsal Training camps */}
         <CampsSection
@@ -191,7 +196,7 @@ export default function App() {
       <Footer />
 
       {/* Dynamic Floating Action items */}
-      
+
       {/* Scroll-to-Top Button */}
       {showScrollTop && (
         <button
@@ -204,7 +209,7 @@ export default function App() {
       )}
 
       {/* MODALS & DRAWERS FOR INTERACTIVE STORYTELLING */}
-      
+
       {/* Booking Form drawer Modal */}
       <BookingModal
         isOpen={isBookingOpen}
@@ -222,7 +227,6 @@ export default function App() {
         bookings={bookings}
         onCancelBooking={handleCancelBooking}
       />
-
     </div>
   );
 }

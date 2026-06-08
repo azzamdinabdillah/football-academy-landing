@@ -1,15 +1,18 @@
-import React, { useEffect, useRef } from 'react';
-import { motion } from 'motion/react';
-import { Sparkles, Award, Star } from 'lucide-react';
-import Button from '../Button';
-import footballVideo from '../../../assets/football.mp4';
+import React, { useEffect, useRef } from "react";
+import { motion } from "motion/react";
+import { Sparkles, Award, Star } from "lucide-react";
+import Button from "../Button";
+import footballVideo from "../../../assets/football.mp4";
 
 interface HeroProps {
   onOpenBookingModal: () => void;
   backgroundPath: string;
 }
 
-export default function Hero({ onOpenBookingModal, backgroundPath }: HeroProps) {
+export default function Hero({
+  onOpenBookingModal,
+  backgroundPath,
+}: HeroProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -17,22 +20,27 @@ export default function Hero({ onOpenBookingModal, backgroundPath }: HeroProps) 
       // Force play in case the autoplay attribute is restricted by background sandbox policies
       const playVideo = () => {
         videoRef.current?.play().catch((err) => {
-          console.warn("Video autoplay was prevented, waiting for interaction:", err);
+          console.warn(
+            "Video autoplay was prevented, waiting for interaction:",
+            err,
+          );
         });
       };
-      
+
       playVideo();
       // Handle potential suspension when tab is unfocused
-      document.addEventListener('visibilitychange', playVideo);
+      document.addEventListener("visibilitychange", playVideo);
       return () => {
-        document.removeEventListener('visibilitychange', playVideo);
+        document.removeEventListener("visibilitychange", playVideo);
       };
     }
   }, []);
 
   return (
-    <header id="hero-top" className="relative h-dvh min-h-[660px] md:min-h-[750px] md:h-full lg:h-dvh w-full bg-brand-dark overflow-hidden">
-      
+    <header
+      id="hero-top"
+      className="relative h-svh min-h-[660px] md:min-h-[750px] md:h-full lg:h-svh w-full bg-brand-dark overflow-hidden"
+    >
       {/* Dynamic Ambient Background Video with smooth zoom-in entrance keyframe */}
       <div className="absolute inset-0 select-none overflow-hidden">
         <motion.div
@@ -60,7 +68,6 @@ export default function Hero({ onOpenBookingModal, backgroundPath }: HeroProps) 
 
       {/* Hero content wrapping relative grids */}
       <div className="absolute inset-0 flex flex-col justify-between max-w-7xl mx-auto px-4 md:px-8 pb-12 pt-32 z-10">
-        
         {/* TOP ACCENTS: Live Badge Notification */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -76,7 +83,6 @@ export default function Hero({ onOpenBookingModal, backgroundPath }: HeroProps) 
 
         {/* BOTTOM SECTION: Left display text, Right BOOK NOW CTA */}
         <div className="w-full flex flex-col md:flex-row md:items-end justify-between gap-8 mt-auto">
-          
           {/* Bottom-Left: ELITE SOCCER TRAINING & RECRUITING */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -84,15 +90,17 @@ export default function Hero({ onOpenBookingModal, backgroundPath }: HeroProps) 
             transition={{ duration: 0.7, delay: 0.4 }}
             className="max-w-2xl"
           >
-            <h1 
-              style={{ fontFamily: 'var(--font-display)' }} 
+            <h1
+              style={{ fontFamily: "var(--font-display)" }}
               className="font-black text-white text-5xl md:text-6.5xl lg:text-7.5xl xl:text-8xl leading-[1.02] tracking-tight text-shadow"
             >
               ELITE SOCCER <br />
               <span className="text-white">TRAINING & RECRUITING</span>
             </h1>
             <p className="text-slate-200 mt-4 text-xs md:text-sm font-medium tracking-wide max-w-lg opacity-90 drop-shadow">
-              San Francisco's premier futsal academy pairing world-class technical footwork with competitive recruitment programs for dedicated youth athletes.
+              San Francisco's premier futsal academy pairing world-class
+              technical footwork with competitive recruitment programs for
+              dedicated youth athletes.
             </p>
           </motion.div>
 
@@ -113,9 +121,7 @@ export default function Hero({ onOpenBookingModal, backgroundPath }: HeroProps) 
               BOOK NOW
             </Button>
           </motion.div>
-
         </div>
-
       </div>
 
       {/* Absolute Sports Aesthetic lower divider grid line */}
