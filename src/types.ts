@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface FutsalCamp {
   id: string;
   title: string;
@@ -54,4 +56,6 @@ export interface TrainingProgramCardProps {
   stat2: string;
   index?: number;
   onOpenBooking?: () => void;
+  key?: React.Key;
 }
+
