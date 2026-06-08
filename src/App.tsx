@@ -9,7 +9,7 @@ import Lenis from 'lenis';
 
 import Navbar from './components/Navbar';
 import Hero from './components/sections/Hero';
-import AboutSection from './components/sections/AboutSection';
+import ProgramsSection from './components/sections/ProgramsSection';
 import CampsSection from './components/sections/CampsSection';
 import TrainingsSection from './components/sections/TrainingsSection';
 import TestimonialsSection from './components/sections/TestimonialsSection';
@@ -165,8 +165,8 @@ export default function App() {
           backgroundPath={heroBackgroundPath}
         />
 
-        {/* Value details / About section */}
-        <AboutSection onOpenBooking={() => handleOpenBookingWithSelect(undefined)} />
+        {/* Value details / Programs section */}
+        <ProgramsSection onOpenBooking={() => handleOpenBookingWithSelect(undefined)} />
 
         {/* Futsal Training camps */}
         <CampsSection

@@ -21,7 +21,7 @@ export default function Footer() {
           <div className="md:col-span-4 flex flex-col items-center md:items-start space-y-3">
             <span className="text-white text-[10px] font-bold tracking-widest uppercase text-slate-400">Quick Links</span>
             <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center md:justify-start text-slate-400 text-xs font-semibold">
-              <a href="#about-section" className="hover:text-white transition-colors duration-150">About</a>
+              <a href="#programs-section" className="hover:text-white transition-colors duration-150">Programs</a>
               <a href="#camps" className="hover:text-white transition-colors duration-150">Camps</a>
               <a href="#trainings" className="hover:text-white transition-colors duration-150">Trainings</a>
               <a href="#testimonials" className="hover:text-white transition-colors duration-150">Testimonials</a>

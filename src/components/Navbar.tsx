@@ -42,7 +42,7 @@ export default function Navbar({ bookingsCount, onOpenBookings, onOpenBookingMod
   const isNavbarVisible = visible || mobileMenuOpen;
 
   const navLinks = [
-    { title: 'About', target: 'about-section' },
+    { title: 'Programs', target: 'programs-section' },
     { title: 'Camps', target: 'camps' },
     { title: 'Trainings', target: 'trainings' },
     { title: 'Testimonials', target: 'testimonials' },

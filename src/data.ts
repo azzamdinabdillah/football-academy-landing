@@ -1,4 +1,4 @@
-import { FutsalCamp, TrainingPackage, Testimonial } from './types';
+import { FutsalCamp, TrainingPackage, Testimonial, TrainingProgramCardProps } from './types';
 
 export const CAMPS_DATA: FutsalCamp[] = [
   {
@@ -107,3 +107,31 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop'
   }
 ];
+
+export const PROGRAMS_DATA: TrainingProgramCardProps[] = [
+  {
+    title: "Elite Soccer Training",
+    description: "Elite soccer training provides top-tier coaching, advanced techniques, & comprehensive drills to player.",
+    image: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=600&auto=format&fit=crop",
+    badge: "TOP CREATOR",
+    stat1: "Age 8-18",
+    stat2: "Elite Tier",
+  },
+  {
+    title: "Pro Coaching & Mentorship",
+    description: "Pro Coaching & Mentorship offers elite guidance, expert training, and personalized support to elevate your performance.",
+    image: "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=600&auto=format&fit=crop",
+    badge: "TOP COACH",
+    stat1: "Pro Mentor",
+    stat2: "1x1 Focus",
+  },
+  {
+    title: "Recruit Clarity & Coaching",
+    description: "Recruit Clarity & Coaching offers clear guidance, expert training, and personalized support for optimal performance.",
+    image: "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?q=80&w=600&auto=format&fit=crop",
+    badge: "COLLEGE READY",
+    stat1: "Collegiate",
+    stat2: "Scouting",
+  }
+];
+
