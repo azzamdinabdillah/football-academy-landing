@@ -63,13 +63,13 @@ export default function TrainingProgramCard({
 
         {/* Bottom stats and CTA */}
         <div className="pt-3.5 flex items-center justify-between border-t border-slate-50">
-          <div className="flex items-center gap-4 text-slate-400 font-bold text-[10px] sm:text-xs">
-            <div className="flex items-center gap-1.5 leading-none">
-              <Users className="w-4 h-4 text-slate-400" />
+          <div className="flex items-center gap-2 sm:gap-4 text-slate-400 font-bold text-[10px] sm:text-xs">
+            <div className="flex items-center gap-1 sm:gap-1.5 leading-none">
+              <Users className="w-3 h-3 sm:w-4 sm:h-4 text-slate-400" />
               <span>{stat1}</span>
             </div>
-            <div className="flex items-center gap-1.5 leading-none">
-              <Award className="w-4 h-4 text-slate-400" />
+            <div className="flex items-center gap-1 sm:gap-1.5 leading-none">
+              <Award className="w-3 h-3 sm:w-4 sm:h-4 text-slate-400" />
               <span>{stat2}</span>
             </div>
           </div>
