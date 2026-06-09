@@ -48,15 +48,35 @@
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
       background: #94a3b8;
     }
+    .drawer-open {
+      transform: translateX(0) !important;
+    }
+    .overlay-visible {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans leading-relaxed flex">
 
-  <!-- Sidebar Navigation -->
-  <aside class="w-80 h-screen sticky top-0 bg-slate-900 text-slate-300 flex flex-col justify-between hidden lg:flex border-r border-slate-800 z-30">
+  <!-- Backdrop Overlay for Mobile Drawer -->
+  <div id="drawer-overlay" class="fixed inset-0 bg-black/50 z-40 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"></div>
+
+  <!-- Mobile Menu Toggle Button -->
+  <button id="menu-toggle" class="fixed top-4 right-4 z-50 lg:hidden flex items-center justify-center w-10 h-10 rounded-xl bg-slate-900 text-white shadow-lg hover:bg-slate-800 transition" aria-label="Toggle navigation">
+    <svg id="menu-icon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+    <svg id="close-icon" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <!-- Sidebar Navigation (Drawer on mobile/tablet) -->
+  <aside id="sidebar" class="w-72 lg:w-80 h-screen fixed lg:sticky top-0 left-0 bg-slate-900 text-slate-300 flex-col justify-between border-r border-slate-800 z-50 transition-transform duration-300 -translate-x-full lg:translate-x-0 lg:flex">
     <div class="p-6">
       <div class="flex items-center gap-3 mb-8">
-        <img src="../assets/logo.png" alt="SF Youth Futsal Logo" class="w-10 h-10 rounded-xl object-contain" />
+        <img src="assets/logo.png" alt="SF Youth Futsal Logo" class="w-10 h-10 rounded-xl object-contain" />
         <div>
           <h1 class="font-display font-bold text-white leading-none">SF Youth Futsal</h1>
           <p class="text-[10px] text-slate-400 mt-1 uppercase tracking-widest font-semibold">Docs & Dev Guideline</p>
@@ -124,7 +144,7 @@
   </aside>
 
   <!-- Main Content Panel -->
-  <main class="flex-1 min-h-screen overflow-y-auto px-6 py-12 lg:px-16 lg:py-16 max-w-5xl mx-auto">
+  <main class="flex-1 min-h-screen overflow-y-auto px-6 pt-20 pb-12 lg:pt-16 lg:px-16 lg:py-16 max-w-5xl mx-auto">
     <div class="space-y-16">
 
       <!-- Header Title Section -->
@@ -433,7 +453,7 @@
         <h4 class="font-semibold text-slate-900 text-sm mt-6 uppercase tracking-wider">Color Palette Accents</h4>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-3">
           <div class="bg-white p-3 rounded-xl border border-slate-200/60 shadow-sm">
-            <div class="w-full h-12 rounded-lg bg-[#0070c0] mb-2 shadow-inner"></div>
+            <div class="w-full h-12 rounded-lg bg-brand-blue mb-2 shadow-inner"></div>
             <div class="text-xs font-bold text-slate-900">Brand Royal Blue</div>
             <div class="text-[10px] text-slate-400 font-mono">#0070c0</div>
             <div class="text-[9px] text-slate-500 mt-1">Primary color, credential badges, sports icon accents.</div>
@@ -511,4 +531,42 @@
   </main>
 
 </body>
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('drawer-overlay');
+  const menuToggle = document.getElementById('menu-toggle');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  function openDrawer() {
+    sidebar.classList.add('drawer-open');
+    overlay.classList.add('overlay-visible');
+    document.body.style.overflow = 'hidden';
+    menuIcon.classList.add('hidden');
+    closeIcon.classList.remove('hidden');
+  }
+
+  function closeDrawer() {
+    sidebar.classList.remove('drawer-open');
+    overlay.classList.remove('overlay-visible');
+    document.body.style.overflow = '';
+    menuIcon.classList.remove('hidden');
+    closeIcon.classList.add('hidden');
+  }
+
+  menuToggle.addEventListener('click', () => {
+    if (sidebar.classList.contains('drawer-open')) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
+  });
+
+  overlay.addEventListener('click', closeDrawer);
+
+  // Close drawer when a nav link is clicked
+  document.querySelectorAll('#sidebar nav a').forEach(link => {
+    link.addEventListener('click', closeDrawer);
+  });
+</script>
 </html>
