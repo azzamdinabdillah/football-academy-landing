@@ -41,8 +41,17 @@ export default function Hero({
       id="hero-top"
       className="relative h-svh min-h-[660px] md:min-h-[750px] md:h-full lg:h-svh w-full bg-brand-dark overflow-hidden"
     >
-      {/* Dynamic Ambient Background Video with smooth zoom-in entrance keyframe */}
-      <div className="absolute inset-0 select-none overflow-hidden">
+      {/* Static background image for mobile/tablet */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat lg:hidden"
+        style={{ backgroundImage: `url(${backgroundPath})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f18] via-black/50 to-black/40" />
+        <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#0a0f18] to-transparent" />
+      </div>
+
+      {/* Dynamic Ambient Background Video for desktop only */}
+      <div className="hidden lg:block absolute inset-0 select-none overflow-hidden">
         <motion.div
           initial={{ scale: 1.08, opacity: 0.1 }}
           animate={{ scale: 1, opacity: 1 }}

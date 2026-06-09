@@ -59,7 +59,7 @@ export default function ModalBase({
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.93, opacity: 0 }}
             transition={{ type: "spring", duration: 0.4 }}
-            className={`bg-white rounded-3xl p-6 md:p-8 w-full ${maxWidth} border border-slate-100 shadow-2xl relative z-10 max-h-[94vh] flex flex-col`}
+            className={`bg-white rounded-3xl p-6 md:p-8 w-full ${maxWidth} border border-slate-100 shadow-2xl relative z-10 max-h-[94svh] flex flex-col`}
             data-lenis-prevent="true"
           >
             {/* Close Button */}
