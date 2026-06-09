@@ -73,7 +73,7 @@ export default function ModalBase({
 
             {/* Header (styled exactly like Contact Section modal) */}
             {title && tagline && (
-              <div className="mb-6 flex-shrink-0 pr-8">
+              <div className="mb-6 shrink-0 pr-8">
                 <span className="text-[10px] text-brand-blue font-black tracking-widest uppercase block mb-1">
                   {tagline}
                 </span>

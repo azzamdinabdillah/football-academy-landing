@@ -1,6 +1,4 @@
 import React from 'react';
-import { motion } from 'motion/react';
-import { Star, MessageSquare } from 'lucide-react';
 import Button from '../Button';
 import TestimonialCard from '../cards/TestimonialCard';
 import { TESTIMONIALS_DATA } from '../../data';
@@ -113,12 +111,12 @@ export default function TestimonialsSection() {
             
             {/* Elegant Vignette Gradient Masks */}
             {/* Horizontal masks for mobile */}
-            <div className="absolute top-0 bottom-0 left-0 w-8 md:w-16 bg-gradient-to-r from-[#f8fafc] to-transparent z-20 pointer-events-none lg:hidden" />
-            <div className="absolute top-0 bottom-0 right-0 w-8 md:w-16 bg-gradient-to-l from-[#f8fafc] to-transparent z-20 pointer-events-none lg:hidden" />
+            <div className="absolute top-0 bottom-0 left-0 w-8 md:w-16 bg-linear-to-r from-[#f8fafc] to-transparent z-20 pointer-events-none lg:hidden" />
+            <div className="absolute top-0 bottom-0 right-0 w-8 md:w-16 bg-linear-to-l from-[#f8fafc] to-transparent z-20 pointer-events-none lg:hidden" />
             
             {/* Vertical masks for desktop */}
-            <div className="absolute top-0 left-0 right-0 h-16 lg:h-24 bg-gradient-to-b from-[#f8fafc] to-transparent z-20 pointer-events-none hidden lg:block" />
-            <div className="absolute bottom-0 left-0 right-0 h-16 lg:h-24 bg-gradient-to-t from-[#f8fafc] to-transparent z-20 pointer-events-none hidden lg:block" />
+            <div className="absolute top-0 left-0 right-0 h-16 lg:h-24 bg-linear-to-b from-[#f8fafc] to-transparent z-20 pointer-events-none hidden lg:block" />
+            <div className="absolute bottom-0 left-0 right-0 h-16 lg:h-24 bg-linear-to-t from-[#f8fafc] to-transparent z-20 pointer-events-none hidden lg:block" />
 
             {/* 1. MOBILE/TABLET HORIZONTAL MARQUEES (Full viewport edge-to-edge, horizontal sliding in opposite directions) */}
             <div className="lg:hidden w-full space-y-3 pt-0 pb-10">

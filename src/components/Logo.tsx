@@ -6,7 +6,7 @@ export default function Logo({ className = "h-12" }: { className?: string }) {
       {/* Dynamic Futsal Olympic Shield Crest */}
       <svg
         viewBox="0 0 100 100"
-        className="w-11 h-11 filter drop-shadow-sm flex-shrink-0"
+        className="w-11 h-11 filter drop-shadow-sm shrink-0"
         aria-hidden="true"
       >
         <defs>

@@ -68,8 +68,8 @@ export default function PricingCard({ pkg, idx, onOpenBooking }: PricingCardProp
             <ul className="space-y-2.5">
               {pkg.benefits.map((benefit, bIdx) => (
                 <li key={bIdx} className="flex items-center gap-2.5 text-xs text-slate-600 leading-normal">
-                  <div className="w-5 h-5 rounded-full bg-[#f0fdf4] border border-[#dcfce7] flex items-center justify-center flex-shrink-0 shadow-sm shadow-[#15a34a]/5">
-                    <Check className="w-3 h-3 text-[#16a34a] stroke-[3]" />
+                  <div className="w-5 h-5 rounded-full bg-[#f0fdf4] border border-[#dcfce7] flex items-center justify-center shrink-0 shadow-sm shadow-[#15a34a]/5">
+                    <Check className="w-3 h-3 text-[#16a34a] stroke-3" />
                   </div>
                   <span>{benefit}</span>
                 </li>

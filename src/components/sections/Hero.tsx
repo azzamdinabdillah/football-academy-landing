@@ -46,8 +46,8 @@ export default function Hero({
         className="absolute inset-0 bg-cover bg-center bg-no-repeat lg:hidden"
         style={{ backgroundImage: `url(${backgroundPath})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f18] via-black/50 to-black/40" />
-        <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#0a0f18] to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#0a0f18] via-black/50 to-black/40" />
+        <div className="absolute inset-x-0 bottom-0 h-44 bg-linear-to-t from-[#0a0f18] to-transparent" />
       </div>
 
       {/* Dynamic Ambient Background Video for desktop only */}
@@ -70,8 +70,8 @@ export default function Hero({
             <source src={footballVideo} type="video/mp4" />
           </video>
           {/* Subtle vignette/shading wash - darker wash to make white display typography highly readable */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f18] via-black/50 to-black/40" />
-          <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#0a0f18] to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-[#0a0f18] via-black/50 to-black/40" />
+          <div className="absolute inset-x-0 bottom-0 h-44 bg-linear-to-t from-[#0a0f18] to-transparent" />
         </motion.div>
       </div>
 
@@ -118,7 +118,7 @@ export default function Hero({
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="flex-shrink-0"
+            className="shrink-0"
           >
             <Button
               onClick={onOpenBookingModal}
@@ -134,7 +134,7 @@ export default function Hero({
       </div>
 
       {/* Absolute Sports Aesthetic lower divider grid line */}
-      <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-blue via-brand-orange to-emerald-500 opacity-90" />
+      <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-linear-to-r from-brand-blue via-brand-orange to-emerald-500 opacity-90" />
     </header>
   );
 }

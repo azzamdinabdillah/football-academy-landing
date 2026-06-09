@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Calendar, User, Phone, Mail, Award, Trash2, ShieldAlert, Heart, RefreshCw } from 'lucide-react';
+import { X, Calendar, Award, Trash2, ShieldAlert, Heart } from 'lucide-react';
 import { Booking } from '../../types';
 import Button from '../Button';
 import ConfirmModal from './ConfirmModal';
@@ -155,7 +155,7 @@ export default function MyBookingsDrawer({
               {/* Drawer footer */}
               <div className="p-6 bg-slate-50 border-t border-slate-100">
                 <div className="flex items-start gap-2.5 text-xs text-slate-500 mb-2">
-                  <ShieldAlert className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                  <ShieldAlert className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
                   <p>
                     <strong>Admission Requirements:</strong> Please bring shin guards, rubber-soled indoor futsal shoes, and your own water bottle. Arrive 15 minutes early.
                   </p>

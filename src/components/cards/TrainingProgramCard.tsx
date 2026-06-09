@@ -24,7 +24,7 @@ export default function TrainingProgramCard({
       className="group select-none relative rounded-[24px] bg-white border border-slate-100 p-2 pb-5 flex flex-col justify-between shadow-[0_8px_30px_rgba(15,23,42,0.02)] hover:shadow-[0_16px_40px_rgba(15,23,42,0.05)] hover:-translate-y-0.5 transition-all duration-300"
     >
       {/* Top Image Part with Inner Radius spacing matching card padding */}
-      <div className="relative rounded-[16px] overflow-hidden aspect-[16/10] sm:aspect-[16/9] bg-slate-50">
+      <div className="relative rounded-[16px] overflow-hidden aspect-16/10 sm:aspect-video bg-slate-50">
         <img
           src={image}
           alt={title}
@@ -49,7 +49,7 @@ export default function TrainingProgramCard({
           >
             <span className="flex items-center gap-1.5">
               {title}
-              <div className="w-4 h-4 rounded-full bg-[#e8fbf1] border border-[#a3f3cc] flex items-center justify-center flex-shrink-0">
+              <div className="w-4 h-4 rounded-full bg-[#e8fbf1] border border-[#a3f3cc] flex items-center justify-center shrink-0">
                 <Check className="w-2.5 h-2.5 text-[#10b981] stroke-[3.5]" />
               </div>
             </span>

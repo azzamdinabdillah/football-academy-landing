@@ -23,7 +23,7 @@ export default function CampCard({ camp, idx, onOpenBooking }: CampCardProps) {
     >
       {/* Image banner */}
       <div className="relative h-52 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent z-10" />
         <img
           src={camp.image}
           alt={camp.title}

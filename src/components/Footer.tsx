@@ -19,7 +19,7 @@ export default function Footer() {
 
           {/* Quick Links Column */}
           <div className="md:col-span-4 flex flex-col items-center md:items-start space-y-3">
-            <span className="text-white text-[10px] font-bold tracking-widest uppercase text-slate-400">Quick Links</span>
+            <span className="text-white text-[10px] font-bold tracking-widest uppercase">Quick Links</span>
             <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center md:justify-start text-slate-400 text-xs font-semibold">
               <a href="#programs-section" className="hover:text-white transition-colors duration-150">Programs</a>
               <a href="#camps" className="hover:text-white transition-colors duration-150">Camps</a>
@@ -31,7 +31,7 @@ export default function Footer() {
 
           {/* Support Column / Academy info */}
           <div className="md:col-span-3 flex flex-col items-center md:items-end space-y-3 text-center md:text-right w-full">
-            <span className="text-white text-[10px] font-bold tracking-widest uppercase text-slate-400">Academy Sessions</span>
+            <span className="text-white text-[10px] font-bold tracking-widest uppercase">Academy Sessions</span>
             <span className="text-slate-500 text-xs font-semibold">U5 - U18 Development</span>
             <span className="text-brand-orange text-xs font-bold">Admissions Open</span>
           </div>

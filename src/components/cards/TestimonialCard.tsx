@@ -11,7 +11,7 @@ interface TestimonialCardProps {
 export default function TestimonialCard({ item, variant = 'desktop' }: TestimonialCardProps) {
   if (variant === 'mobile') {
     return (
-      <div className="w-[220px] sm:w-[260px] bg-white rounded-xl shadow-sm border border-slate-200/30 p-4 flex flex-col justify-between flex-shrink-0 hover:shadow-md hover:border-slate-300/50 transition-all duration-200">
+      <div className="w-[220px] sm:w-[260px] bg-white rounded-xl shadow-sm border border-slate-200/30 p-4 flex flex-col justify-between shrink-0 hover:shadow-md hover:border-slate-300/50 transition-all duration-200">
         <div className="space-y-2">
           <div className="flex items-center gap-1">
             <span className="text-[10px] font-bold text-slate-500 font-mono">{item.rating}</span>

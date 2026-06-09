@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, Calendar, Ticket, Phone } from 'lucide-react';
+import { Menu, X, Ticket } from 'lucide-react';
 import Logo from './Logo';
 import Button from './Button';
 
@@ -84,7 +84,7 @@ export default function Navbar({ bookingsCount, onOpenBookings, onOpenBookingMod
             title="View My Bookings"
           >
             {bookingsCount > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center font-bold text-[10px] animate-bounce z-10 animate-pulse">
+              <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center font-bold text-[10px] z-10 animate-pulse">
                 {bookingsCount}
               </span>
             )}

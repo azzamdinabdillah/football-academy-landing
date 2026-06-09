@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { motion } from 'motion/react';
 import { Calendar, User, Mail, Phone, Flame, Check, Trophy, Ticket, AlertTriangle } from 'lucide-react';
 import { FutsalCamp, TrainingPackage, Booking } from '../../types';
 import Button from '../Button';
@@ -195,7 +194,7 @@ export default function BookingModal({
                     : 'text-slate-600 hover:bg-slate-50 ring-1 ring-slate-200 ring-inset'
                 }`}
               >
-                <Trophy className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 ${bookingType === 'Camp' ? 'text-brand-blue' : 'text-slate-400'}`} />
+                <Trophy className={`w-4 h-4 sm:w-5 sm:h-5 shrink-0 ${bookingType === 'Camp' ? 'text-brand-blue' : 'text-slate-400'}`} />
                 <span>TRAINING CAMPS</span>
               </button>
               <button
@@ -207,7 +206,7 @@ export default function BookingModal({
                     : 'text-slate-600 hover:bg-slate-50 ring-1 ring-slate-200 ring-inset'
                 }`}
               >
-                <Flame className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 ${bookingType === 'Training' ? 'text-orange-500' : 'text-slate-400'}`} />
+                <Flame className={`w-4 h-4 sm:w-5 sm:h-5 shrink-0 ${bookingType === 'Training' ? 'text-orange-500' : 'text-slate-400'}`} />
                 <span>INDIVIDUAL & GROUP TRAINING</span>
               </button>
             </div>
@@ -340,7 +339,7 @@ export default function BookingModal({
           // STEP 2: SPORTS TICKET / RECEIPT CONFIRMATION
           <div className="space-y-6 flex flex-col items-center py-2 sm:py-4">
             <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 mb-2 animate-bounce">
-              <Check className="w-8 h-8 stroke-[3]" />
+              <Check className="w-8 h-8 stroke-3" />
             </div>
 
             {/* Dynamic Ticket Design */}
